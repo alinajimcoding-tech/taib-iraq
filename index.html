@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة طيب العراق للنقل واللوجيستيك</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- استدعاء خط Readex Pro العصري من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات Font Awesome للتواصل الاجتماعي -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Readex Pro', sans-serif;
         }
 
         body {
@@ -20,12 +23,12 @@
             text-align: right;
         }
 
-        /* 1. Navbar - الشريط العلوي */
+        /* Header Navigation */
         header {
             background: linear-gradient(90deg, #6c5ce7, #513cd5);
             padding: 15px 40px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
         }
@@ -36,26 +39,7 @@
             gap: 10px;
             color: white;
             font-weight: 700;
-            font-size: 20px;
-        }
-
-        .brand img {
-            height: 35px;
-            width: auto;
-        }
-
-        nav a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            margin-right: 25px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+            font-size: 22px;
         }
 
         /* Main Layout */
@@ -72,18 +56,18 @@
         }
 
         .hero-title h1 {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 700;
             color: #2d3436;
             margin-bottom: 8px;
         }
 
         .hero-title p {
             color: #636e72;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        /* Cards Style - الكروت بنفس البوردر الملون بالمثال */
+        /* Cards Style */
         .card {
             background: #ffffff;
             border-radius: 16px;
@@ -110,13 +94,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 19px;
+            font-weight: 600;
             color: #2d3436;
             margin-bottom: 25px;
         }
 
-        /* Form Controls - المدخلات من خانتين */
+        /* Form Controls */
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -134,8 +118,8 @@
         }
 
         label {
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             color: #2d3436;
             display: flex;
             align-items: center;
@@ -151,7 +135,7 @@
             padding: 12px 15px;
             border: 1.5px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
             transition: all 0.3s ease;
             background-color: #fdfdfd;
@@ -163,7 +147,7 @@
             background-color: #fff;
         }
 
-        /* Buttons - الزر البنفسجي */
+        /* Buttons */
         .btn-submit {
             grid-column: span 2;
             background: linear-gradient(90deg, #6c5ce7, #513cd5);
@@ -171,8 +155,8 @@
             border: none;
             padding: 14px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
             margin-top: 10px;
@@ -184,7 +168,7 @@
             transform: translateY(-2px);
         }
 
-        /* Table Design - الجدول الجاهز */
+        /* Table Design */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -197,7 +181,7 @@
             background-color: #6c5ce7;
             color: white;
             padding: 12px;
-            font-size: 14px;
+            font-size: 13px;
             text-align: center;
         }
 
@@ -205,7 +189,7 @@
             padding: 12px;
             border-bottom: 1px solid #edf2f7;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         table tr:nth-child(even) {
@@ -215,19 +199,19 @@
         .alibaba-link {
             color: #6c5ce7;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .alibaba-link:hover {
             text-decoration: underline;
         }
 
-        .price { color: #27ae60; font-weight: 700; }
-        .moq { color: #e74c3c; font-weight: 700; }
-        .rating { color: #f39c12; font-weight: 700; }
+        .price { color: #27ae60; font-weight: 600; }
+        .moq { color: #e74c3c; font-weight: 600; }
+        .rating { color: #f39c12; font-weight: 600; }
         .no-data { color: #a0aec0; font-style: italic; }
 
-        /* Footer - الفوتر بنفس الشكل بالضبط */
+        /* Footer & Social Media Icons */
         footer {
             background: linear-gradient(90deg, #4834d4, #6c5ce7);
             color: white;
@@ -237,28 +221,53 @@
         }
 
         footer h3 {
-            font-size: 18px;
+            font-size: 17px;
             margin-bottom: 8px;
         }
 
         footer p {
             font-size: 13px;
             opacity: 0.8;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
+
+        .social-container {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 22px;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .social-icon.facebook:hover { color: #1877f2; }
+        .social-icon.instagram:hover { color: #e4405f; }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation (تمت إزالة السفينة) -->
     <header>
         <div class="brand">
-            🚢 طيب العراق
+            طيب العراق
         </div>
-        <nav>
-            <a href="#">الرئيسية</a>
-            <a href="#">تواصل معنا</a>
-        </nav>
     </header>
 
     <!-- Main Container -->
@@ -356,10 +365,20 @@
     <footer>
         <h3>تواصل معنا</h3>
         <p>البريد الإلكتروني: info@taib-iraq.com</p>
-        <p>© 2026 شركة طيب العراق للنقل واللوجيستيك - جميع الحقوق محفوظة.</p>
+        
+        <div class="social-container">
+            <a href="https://www.facebook.com/share/1VJAE8Ukyg/" target="_blank" class="social-icon facebook" title="فيسبوك">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/teeb.express/" target="_blank" class="social-icon instagram" title="انستغرام teeb.express">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        <p style="margin-top: 15px;">© 2026 شركة طيب العراق للنقل واللوجيستيك - جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- Database Logic (مع الروابط المباشرة لعلي بابا) -->
+    <!-- Database Logic -->
     <script>
     const productsDatabase = {
         "smart watch": [
