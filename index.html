@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة طيب العراق للنقل واللوجيستيك</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            direction: rtl; 
+            text-align: right; 
+            margin: 20px; 
+            background-color: #fef5f5; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        h1, h2 { color: #333; }
+        h1 { text-align: center; }
+        
+        .logo { text-align: center; margin-bottom: 15px; }
+        .logo img { max-width: 180px; height: auto; }
+
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        
+        button { 
+            background-color: #5c67f2; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin-top: 15px; 
+        }
+        button:hover { background-color: #4a54e1; }
+        
+        .section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
+        
+        nav {
+            background-color: #0056b3;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        table tr:nth-child(even) { background-color: #f9f9f9; }
+
+        .rating { color: #ff9800; font-weight: bold; }
+        .price { color: #2e7d32; font-weight: bold; }
+        .moq { color: #d9534f; font-weight: bold; }
+        .no-data { text-align: center; color: #777; font-style: italic; }
+        
+        /* تنسيق روابط علي بابا */
+        .alibaba-link {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .alibaba-link:hover {
+            text-decoration: underline;
+            color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+
+    <!-- الشعار والعنوان -->
+    <div class="logo">
+        
+    </div>
+    
+    <h1>شركة طيب العراق للنقل واللوجيستيك</h1>
+
+    <!-- 1️⃣ أولاً: قسم طلب استيراد بضاعة -->
+    <div class="section">
+        <h2>طلب استيراد بضاعة</h2>
+        <form action="save_order.php" method="POST">
+            <label for="trader-name">اسم التاجر:</label>
+            <input type="text" id="trader-name" name="trader-name" required>
+
+            <label for="trader-phone">رقم الهاتف:</label>
+            <input type="tel" id="trader-phone" name="trader-phone" required>
+
+            <label for="trader-address">العنوان:</label>
+            <input type="text" id="trader-address" name="trader-address" required>
+
+            <label for="goods-name">البضاعة المراد استيرادها:</label>
+            <input type="text" id="goods-name" name="goods-name" required>
+
+            <label for="goods-code">كود البضاعة:</label>
+            <input type="text" id="goods-code" name="goods-code">
+
+            <label for="platform">برنامج التسوق:</label>
+            <select id="platform" name="platform">
+                <option value="علي بابا">علي بابا</option>
+                <option value="علي اكسبريس">علي اكسبريس</option>
+                <option value="أخرى">أخرى</option>
+            </select>
+
+            <button type="submit">إرسال الطلب</button>
+        </form>
+    </div>
+
+    <!-- 2️⃣ ثانياً: قسم التوصيات والموردين في الأسفل -->
+    <div class="section">
+        <h2>استعراض الموردين والتجار الموصى بهم</h2>
+        <p>اختر نوع المنتج لعرض الموردين مباشرة والذهاب إلى علي بابا:</p>
+        
+        <label for="productSelect">اختر المنتج:</label>
+        <select id="productSelect" onchange="showTraders()">
+            <option value="">-- اختر المنتج --</option>
+            <option value="smart watch">ساعة ذكية (Smart Watch)</option>
+            <option value="projector">بروجكتر (Projector)</option>
+            <option value="headphones">سماعات (Headphones)</option>
+            <option value="cctv camera">كاميرات مراقبة (CCTV Camera)</option>
+            <option value="monitor">شاشات عرض (Monitors)</option>
+        </select>
+
+        <div id="recommendationsContainer" style="display: none; margin-top: 20px;">
+            <table id="tradersTable">
+                <thead>
+                    <tr>
+                        <th>اسم الشركة / التاجر</th>
+                        <th>تفاصيل المنتج</th>
+                        <th>السعر</th>
+                        <th>الحد الأدنى للطلب (MOQ)</th>
+                        <th>التقييم</th>
+                    </tr>
+                </thead>
+                <tbody id="tradersBody">
+                    <!-- يتم التحميل يدوياً وفورياً من الـ JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// قاعدة البيانات اليدوية السريعة المباشرة
+const productsDatabase = {
+    "smart watch": [
+        { company_name: "Shenzhen Colmi Technology Co., Ltd.", product_title: "COLMI P71 Smartwatch Bluetooth Calling", price: "3,712 IQD", moq: "Min. order: 1 piece", rating: "★ 4.8" },
+        { company_name: "Shenzhen Phylink Electronics Co., Ltd.", product_title: "New Ultra Smart Watch Series 8 49mm NFC", price: "2,227 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.6" },
+        { company_name: "Guangzhou Lince Technology Co., Ltd.", product_title: "W68 Ultra Max Smart Watch 2.2 inch IPS", price: "5,197 IQD", moq: "Min. order: 1 piece", rating: "★ 4.9" },
+        { company_name: "Yiwu City Jiaye E-Commerce Firm", product_title: "T800 Ultra Smart Watch Series 8 Waterproof", price: "1,856 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.4" }
+    ],
+    "projector": [
+        { company_name: "Shenzhen Touyinger Technology Co., Ltd.", product_title: "TouYinger Q10 Full HD 1080P Projector 9500 Lumens", price: "180,000 IQD", moq: "Min. order: 1 piece", rating: "★ 4.9" },
+        { company_name: "Guangzhou Wanbo Electronic Technology", product_title: "Wanbo T2 Max Smart Mini Projector Portable 4K", price: "110,000 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.7" },
+        { company_name: "Shenzhen Magcubic Optoelectronics", product_title: "HY300 Android 11 Smart Projector Dual WiFi6", price: "50,000 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.8" }
+    ],
+    "headphones": [
+        { company_name: "Shenzhen Linx Technology Co., Ltd.", product_title: "Headset Stereo Headphones", price: "IQD 9,120-9,473", moq: "Min. order: 1 piece", rating: "★ 4.5 (85)" },
+        { company_name: "Yiwu Thousand Shores E Business Co., Ltd.", product_title: "Audio Headset", price: "IQD 5,070", moq: "Min. order: 48 pieces", rating: "★ 5.0 (6)" },
+        { company_name: "Jiangxi Qianguang Electronic Technology Co., Ltd.", product_title: "Wired / Wireless Headset", price: "IQD 5,083-11,615", moq: "Min. order: 100 pieces", rating: "N/A" },
+        { company_name: "Shenzhen Guideray Electronic Co., Ltd.", product_title: "Earphone / Headset", price: "IQD 4,443-4,704", moq: "Min. order: 10 pieces", rating: "★ 4.7 (43)" },
+        { company_name: "Guangzhou Opsmen Tech Co., Ltd.", product_title: "Tactical Noise Cancelling Headset", price: "IQD 41,143-91,444", moq: "Min. order: 2 pieces", rating: "★ 5.0 (9)" },
+        { company_name: "Guangzhou Yiyucheng Technology Co., Ltd.", product_title: "Gaming Headset", price: "IQD 43,116-65,326", moq: "Min. order: 20 pieces", rating: "N/A" },
+        { company_name: "Shenzhen Ruitao Technology Co., Ltd.", product_title: "Mini Headset Bluetooth", price: "IQD 1,425-1,451", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Yiwu Weiying Motorcycle Accessories Co., LTD", product_title: "Helmet Intercom Headset", price: "IQD 7,186-8,493", moq: "Min. order: 5 sets", rating: "★ 4.8 (58)" },
+        { company_name: "Dongyang Aobeishi Optoelectronic Technology Co., Ltd", product_title: "Lightweight Headset", price: "IQD 392-458", moq: "Min. order: 200 pieces", rating: "★ 4.9 (11)" },
+        { company_name: "Guangzhou Jiediao Electronic Technology Co., Ltd.", product_title: "Wired Gaming Headset", price: "IQD 8,075-8,597", moq: "Min. order: 1000 pieces", rating: "★ 4.0 (4)" },
+        { company_name: "Shenzhen Scorpion Industrial Co., Ltd.", product_title: "Professional Headset", price: "IQD 20,382-21,689", moq: "Min. order: 300 pieces", rating: "★ 5.0 (1)" },
+        { company_name: "Raytalk Communications Ltd.", product_title: "Aviation / Heavy Duty Headset", price: "IQD 587,933", moq: "Min. order: 10 pieces", rating: "★ 4.8 (31)" },
+        { company_name: "Jinjiang Beisite Electronic Technology Co., Ltd.", product_title: "Electronic Piano Headset", price: "IQD 44,553-47,166", moq: "Min. order: 5 cartons", rating: "★ 4.9 (144)" },
+        { company_name: "Shenzhen Remax Technology Co., Ltd.", product_title: "Remax Wireless Headset", price: "IQD 5,880-7,186", moq: "Min. order: 6 pieces", rating: "★ 4.8 (97)" },
+        { company_name: "Shenzhen Smartgoor lot Technology Co.,Ltd.", product_title: "Smart Bluetooth Headset", price: "IQD 6,520-8,349", moq: "Min. order: 2 pieces", rating: "★ 4.6 (52)" },
+        { company_name: "Shenzhen Wooask Technology Co., Ltd.", product_title: "AI Translator Headset", price: "IQD 195,978", moq: "Min. order: 1 piece", rating: "★ 4.3 (27)" },
+        { company_name: "Hong Kong Guanface Electronic Technology Limited", product_title: "Stereo Headsets", price: "IQD 3,907-5,214", moq: "Min. order: 10 pieces", rating: "★ 4.4 (3)" },
+        { company_name: "SHENZHEN KTCALL SMART TECHNOLOGY CO., LTD.", product_title: "Call Center Headset", price: "IQD 8,689-11,106", moq: "Min. order: 1 set", rating: "★ 4.7 (5)" },
+        { company_name: "Shenzhen Fdc Electronics Co., Ltd.", product_title: "Sports Headset", price: "IQD 18,292-22,028", moq: "Min. order: 1 piece", rating: "★ 4.6 (121)" },
+        { company_name: "Guangzhou Lingyue Outdoor Products Co., Ltd.", product_title: "Tactical Communication Headset", price: "IQD 126,733-168,541", moq: "Min. order: 10 pieces", rating: "★ 4.8 (9)" }
+    ],
+    "cctv camera": [
+        { company_name: "Super Smart Home (Shanghai) Internet of Things Technology Co., LTD.", product_title: "Smart IoT CCTV Security Camera", price: "IQD 50,955-77,085", moq: "Min. order: 1 unit", rating: "N/A" },
+        { company_name: "HTW TECH LIMITED", product_title: "Professional HD Security CCTV Camera", price: "IQD 104,261-130,391", moq: "Min. order: 1 piece", rating: "★ 4.9 (88)" },
+        { company_name: "Guangzhou EseeCloud Technology Co., Ltd.", product_title: "EseeCloud Wireless IP Camera", price: "IQD 9,799-10,453", moq: "Min. order: 2 pieces", rating: "★ 4.0 (4)" },
+        { company_name: "Shenzhen Mingshang Intelligent Electronics Co., Ltd.", product_title: "Intelligent Vehicle/Home CCTV Camera", price: "IQD 18,279-22,198", moq: "Min. order: 100 pieces", rating: "★ 4.9 (15)" },
+        { company_name: "Hangzhou Beitui Technology Co., Ltd.", product_title: "Outdoor Waterproof IP Security Camera", price: "IQD 151,099", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Shenzhen Hiseeu Technolgy Co., Ltd.", product_title: "Hiseeu Wireless Security Camera System", price: "IQD 142,411-342,308", moq: "Min. order: 1 set", rating: "★ 4.7 (83)" },
+        { company_name: "Shenzhen Kean Digital Co., Ltd.", product_title: "Kean Digital Mini IP Camera", price: "IQD 19,167", moq: "Min. order: 1 piece", rating: "★ 4.7 (103)" },
+        { company_name: "Shenzhen Fujingdian Technology Co., Ltd.", product_title: "HD CCTV Dome Camera", price: "IQD 11,759-15,679", moq: "Min. order: 5 pieces", rating: "N/A" },
+        { company_name: "Shenzhen Senmu Technology Development Co., Ltd.", product_title: "Night Vision Smart Security Camera", price: "IQD 9,982-11,380", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Zhaoqing Mayi Technology Co., Ltd.", product_title: "Mayi Security Outdoor Camera", price: "IQD 8,362-8,493", moq: "Min. order: 12 pieces", rating: "★ 4.6 (11)" },
+        { company_name: "Argus Information Technology Co., Ltd.", product_title: "Argus Long-Range Thermal/HD CCTV Camera System", price: "IQD 9,145,624-13,065,177", moq: "Min. order: 1 piece", rating: "★ 5.0 (2)" },
+        { company_name: "Shenzhen Conda Smart Technology Co., Ltd.", product_title: "Conda Solar Powered Wireless CCTV Camera", price: "IQD 58,663-60,754", moq: "Min. order: 2 pieces", rating: "★ 5.0 (20)" },
+        { company_name: "Fuzhou Xuzhuo Electronic Technology Co., Ltd.", product_title: "PTZ Speed Dome CCTV Camera", price: "IQD 391,956-653,259", moq: "Min. order: 1 piece", rating: "★ 5.0 (1)" },
+        { company_name: "Beijing Qixilin Technology Co., Ltd.", product_title: "Industrial Grade IP Security Camera", price: "IQD 150,250-215,576", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Guangzhou Fosvision Technology Co., Ltd.", product_title: "Fosvision Multi-Camera Security System", price: "IQD 305,791-318,164", moq: "Min. order: 4 sets", rating: "★ 4.7 (23)" },
+        { company_name: "Huizhou Zhimei Interconnection Technology Co., Ltd.", product_title: "WiFi Smart Home Security Camera", price: "IQD 26,131", moq: "Min. order: 2 pieces", rating: "★ 4.5 (50)" },
+        { company_name: "Shenzhen Ainhyzic Electronics Co., Ltd.", product_title: "Ainhyzic Full HD Security Camera", price: "IQD 25,922-29,280", moq: "Min. order: 1 piece", rating: "★ 5.0 (1)" },
+        { company_name: "Jinan Hope Wish Photoelectronic Technology Co., Ltd", product_title: "High Precision Laser / Thermal Security System", price: "IQD 4,572,812-5,879,330", moq: "Min. order: 2 sets", rating: "★ 5.0 (1)" },
+        { company_name: "Giant Alarm System Co., Ltd", product_title: "Giant Alarm CCTV Security Sensor Camera", price: "IQD 26,000-30,050", moq: "Min. order: 10 pieces", rating: "★ 4.5 (17)" },
+        { company_name: "Huizhou Ao Shi Technology Co., Ltd.", product_title: "Ao Shi Waterproof Outdoor CCTV Camera", price: "IQD 11,498-42,854", moq: "Min. order: 2 pieces", rating: "★ 4.7 (46)" }
+    ],
+    "monitor": [
+        { company_name: "Shenzhen Refee Technology Co., Ltd.", product_title: "LCD Commercial Display / Digital Signage Monitor", price: "IQD 235,174-653,259", moq: "Min. order: 1 piece", rating: "★ 4.9 (30)" },
+        { company_name: "Shenzhen shijiexiu Technology Co., Ltd.", product_title: "Large Outdoor LED Display Screen Monitor", price: "IQD 1,979,375-2,057,766", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Shenzhen Cosun Sign Smart-Tech Co., Ltd.", product_title: "Smart Interactive Touch Display Screen", price: "IQD 1,045,215-1,567,822", moq: "Min. order: 1 set", rating: "★ 5.0 (4)" },
+        { company_name: "YAHAM OPTOELECTRONICS CO., LTD.", product_title: "Yaham Commercial LED Video Wall Display", price: "IQD 653,259-783,911", moq: "Min. order: 2 sets", rating: "N/A" },
+        { company_name: "Shenzhen Huaqun Century Photoelectricity Co., Ltd.", product_title: "Ultra HD Photoelectric Screen Monitor", price: "IQD 164,622-190,752", moq: "Min. order: 2 pieces", rating: "N/A" },
+        { company_name: "Hefei Ouman Electronic Technology Co., Ltd.", product_title: "Industrial Grade LCD Display Monitor", price: "IQD 424,619", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Shenzhen Pro Vision Technology Co., Ltd.", product_title: "Pro Vision Advertising LCD Display Screen", price: "IQD 385,149-770,284", moq: "Min. order: 1 piece", rating: "★ 4.7 (5)" },
+        { company_name: "Hangzhou YD Illumination Co., Ltd.", product_title: "LED Illumination Module Display Screen", price: "IQD 1,503-1,634", moq: "Min. order: 10 pieces", rating: "★ 5.0 (2)" },
+        { company_name: "Shenzhen Fangcheng Tech Co., Ltd.", product_title: "Interactive Whiteboard Smart Touch Screen", price: "IQD 259,998-457,282", moq: "Min. order: 1 piece", rating: "★ 4.6 (3)" },
+        { company_name: "Shenzhen Vmision Technology Co., Ltd.", product_title: "Vmision Commercial HD Video Wall Monitor", price: "IQD 71,859-516,075", moq: "Min. order: 1 set", rating: "N/A" },
+        { company_name: "Guangdong Hushida Electronic Technology Co., Ltd.", product_title: "Hushida Floor Standing Kiosk Touch Display", price: "IQD 241,706-269,143", moq: "Min. order: 1 set", rating: "★ 4.2 (15)" },
+        { company_name: "Guangzhou Hushida Electronic Co., Ltd.", product_title: "Hushida Digital Advertising Display Board", price: "IQD 979,889-2,286,406", moq: "Min. order: 1 set", rating: "★ 5.0 (10)" },
+        { company_name: "Charming Co., Ltd.", product_title: "Charming Ultra Slim Commercial Display Screen", price: "IQD 130,652-137,185", moq: "Min. order: 1 piece", rating: "★ 5.0 (3)" },
+        { company_name: "Shenzhen Jiulong Optoelectronics Co., Ltd.", product_title: "Jiulong High Resolution Video Screen Monitor", price: "IQD 1,025,617-1,039,989", moq: "Min. order: 2 pieces", rating: "★ 5.0 (1)" },
+        { company_name: "Dongguan Basco Electronics Technology Company Limited", product_title: "Basco Compact LCD Monitor Screen", price: "IQD 24,694", moq: "Min. order: 1 piece", rating: "★ 5.0 (4)" },
+        { company_name: "Shenzhen Itouchscreen Technology Co.,ltd.", product_title: "Itouchscreen Interactive Multi-Touch Panel", price: "IQD 428,538-467,734", moq: "Min. order: 1 unit", rating: "★ 4.6 (1)" },
+        { company_name: "Guangzhou Senke Electronics Co., Ltd.", product_title: "Senke All-in-One Touch Screen PC Monitor", price: "IQD 207,737-453,362", moq: "Min. order: 1 piece", rating: "★ 4.8 (24)" },
+        { company_name: "Shanghai Senke Electronic Technology Co., Ltd.", product_title: "Senke Commercial Digital Display Kiosk", price: "IQD 446,830-466,427", moq: "Min. order: 1 piece", rating: "★ 4.4 (7)" },
+        { company_name: "Shenzhen Huaxintong Photoelectric Technology Co., Ltd.", product_title: "Photoelectric Advertising Screen Monitor", price: "IQD 128,039-133,265", moq: "Min. order: 1 piece", rating: "★ 4.7 (18)" },
+        { company_name: "Xiangmei shijie (Shenzhen) Technology Co., Ltd.", product_title: "Xiangmei Compact LED Display Module Screen", price: "IQD 4,181-5,227", moq: "Min. order: 1000 pieces", rating: "★ 5.0 (3)" },
+        { company_name: "Shenzhen Jieyu Video Technology Co., Ltd.", product_title: "Jieyu Video Wall Controller / Display Unit", price: "IQD 228,641-261,304", moq: "Min. order: 10 pieces", rating: "★ 5.0 (2)" },
+        { company_name: "Shenzhen Xinhe Lighting Optoelectronics Co., Ltd.", product_title: "Xinhe Transparent LED Display Wall Screen", price: "IQD 389,343-402,408", moq: "Min. order: 1 sq.m", rating: "★ 5.0 (6)" },
+        { company_name: "Beijing Reachii Star Technology Co., Ltd.", product_title: "Reachii Commercial Display Board Screen", price: "IQD 455,975-482,106", moq: "Min. order: 2 pieces", rating: "N/A" },
+        { company_name: "Foshan Golden Mango Electronic Co., Ltd.", product_title: "Golden Mango High Brightness LCD Monitor", price: "IQD 343,615-435,071", moq: "Min. order: 1 unit", rating: "N/A" },
+        { company_name: "Shaanxi Shuangqi Technology Co., Ltd.", product_title: "Shuangqi Industrial Monitor Display Unit", price: "IQD 176,380-194,672", moq: "Min. order: 10 pieces", rating: "★ 4.9 (6)" },
+        { company_name: "Shenzhen Wucaihong Electronic Technology Co., Ltd.", product_title: "Wucaihong Color Screen Display Module", price: "IQD 28,744-36,583", moq: "Min. order: 10 pieces", rating: "★ 4.7 (60)" },
+        { company_name: "Hunan Wanxianda Technology Co., Ltd.", product_title: "Wanxianda HD Commercial Monitor Panel", price: "IQD 128,039-435,071", moq: "Min. order: 1 piece", rating: "★ 4.8 (4)" },
+        { company_name: "Tianjin Yuanxi Electronic Technology Co., Ltd.", product_title: "Yuanxi Smart Commercial LCD Screen", price: "IQD 803,509", moq: "Min. order: 1 piece", rating: "N/A" },
+        { company_name: "Guangdong Baolun Electronics Co., Ltd.", product_title: "Baolun Professional Video Wall Screen", price: "IQD 320,097-457,282", moq: "Min. order: 2 pieces", rating: "★ 3.5 (2)" },
+        { company_name: "Shanghai Key-Touch Electronic Technology Co., Ltd.", product_title: "Key-Touch Interactive Touch Screen Monitor", price: "IQD 235,174-2,939,665", moq: "Min. order: 1 piece", rating: "★ 4.5 (3)" },
+        { company_name: "Shanghai Zhuxin Intelligent Technology Co., Ltd.", product_title: "Zhuxin Smart Interactive Display Monitor", price: "IQD 286,128", moq: "Min. order: 1 set", rating: "★ 4.2 (22)" },
+        { company_name: "Guangzhou Licon Electronic Tec. Co., Ltd.", product_title: "Licon Commercial Ultra Slim Monitor Screen", price: "IQD 116,281-129,346", moq: "Min. order: 1 piece", rating: "★ 4.8 (85)" },
+        { company_name: "Tianchang Wisdom Electronic Co., Ltd.", product_title: "Wisdom Smart Control Display Screen Unit", price: "IQD 130,652-1,175,866", moq: "Min. order: 2 pieces", rating: "★ 5.0 (2)" }
+    ]
+};
+
+// دالة عرض الموردين مع توليد رابط مباشر لبحث علي بابا
+function showTraders() {
+    const selectedProduct = document.getElementById("productSelect").value;
+    const container = document.getElementById("recommendationsContainer");
+    const tbody = document.getElementById("tradersBody");
+
+    tbody.innerHTML = "";
+
+    if (selectedProduct) {
+        const traders = productsDatabase[selectedProduct] || [];
+
+        if (traders.length > 0) {
+            traders.forEach(trader => {
+                const searchQuery = encodeURIComponent(`${trader.product_title} ${trader.company_name}`);
+                const alibabaUrl = `https://www.alibaba.com/trade/search?SearchText=${searchQuery}`;
+
+                const row = `
+                    <tr>
+                        <td>
+                            <a href="${alibabaUrl}" target="_blank" class="alibaba-link" title="انقر للانتقال لعلي بابا">
+                                🏢 ${trader.company_name}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="${alibabaUrl}" target="_blank" class="alibaba-link" title="انقر لرؤية المنتج في علي بابا">
+                                📦 ${trader.product_title}
+                            </a>
+                        </td>
+                        <td class="price">${trader.price}</td>
+                        <td class="moq">${trader.moq}</td>
+                        <td class="rating">${trader.rating}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        } else {
+            tbody.innerHTML = `<tr><td colspan="5" class="no-data">لا توجد بيانات مضافة حالياً لهذا المنتج.</td></tr>`;
+        }
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

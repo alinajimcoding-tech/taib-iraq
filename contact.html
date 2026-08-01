@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - شركة طيب العراق</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            margin: 20px;
+            background-color: #fef5f5;
+            background-image: url('logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 350px;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        /* شريط التنقل */
+        nav {
+            background-color: #0056b3;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2 { color: #333; }
+        h1 { text-align: center; }
+
+        .contact-info {
+            line-height: 1.8;
+            font-size: 16px;
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 6px;
+            border-right: 4px solid #0056b3;
+        }
+
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            box-sizing: border-box; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            font-family: inherit;
+        }
+
+        button { 
+            background-color: #5c67f2; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin-top: 15px; 
+            font-size: 16px; 
+        }
+        button:hover { background-color: #4a54e1; }
+
+        .social-links { margin-top: 15px; }
+        .social-links img { 
+            width: 40px; 
+            height: 40px; 
+            vertical-align: middle; 
+            transition: transform 0.2s;
+        }
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- شريط التنقل للربط بين الصفحات -->
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+
+    <h1>تواصل معنا</h1>
+    <p style="text-align: center;">نسعد بتواصلكم واستفساراتكم حول خدمات الشحن والاستيراد.</p>
+
+    <div class="contact-info">
+        <p><strong>📍 العنوان:</strong> العراق - الحلة / بابل</p>
+        <p><strong>📞 الهاتف:</strong> 07811662140</p>
+        <p><strong>✉️ البريد الإلكتروني:</strong> info@example.com</p>
+    </div>
+
+    <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <h2>أرسل لنا رسالة مباشرة</h2>
+    <form>
+        <label for="name">الاسم الكامل:</label>
+        <input type="text" id="name" placeholder="أدخل اسمك" required>
+
+        <label for="email">البريد الإلكتروني أو رقم الهاتف:</label>
+        <input type="text" id="email" placeholder="أدخل وسيلة التواصل" required>
+
+        <label for="message">الرسالة:</label>
+        <textarea id="message" rows="5" placeholder="اكتب استفسارك هنا..." required></textarea>
+
+        <button type="submit">إرسال الرسالة</button>
+    </form>
+
+    <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <h2>تابعنا على منصات التواصل</h2>
+    <div class="social-links">
+        <a href="https://www.facebook.com/coniraq/" target="_blank">
+            <img src="facebook_icon.png" alt="فيسبوك">
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
