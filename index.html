@@ -59,13 +59,20 @@
         }
         body.ltr .top-bar-global { left: auto; right: 20px; }
 
-        .btn-theme, .btn-lang {
+        .btn-theme, .btn-lang, .btn-menu-toggle {
             background: var(--card-bg); border: 1.5px solid var(--accent); color: var(--accent);
             padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 13px;
             display: flex; align-items: center; gap: 8px; backdrop-filter: blur(8px);
         }
-        body.dark-mode .btn-theme, body.dark-mode .btn-lang { border-color: var(--secondary); color: var(--secondary); }
-        .btn-theme:hover, .btn-lang:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+        body.dark-mode .btn-theme, body.dark-mode .btn-lang, body.dark-mode .btn-menu-toggle { border-color: var(--secondary); color: var(--secondary); }
+        .btn-theme:hover, .btn-lang:hover, .btn-menu-toggle:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+
+        /* زر قائمة الهامبرغر - مخفي افتراضياً للشاشات الكبيرة */
+        .btn-menu-toggle {
+            display: none;
+            padding: 8px 14px;
+            font-size: 16px;
+        }
 
         .social-links-header { display: flex; gap: 8px; }
         .social-link-btn {
@@ -165,14 +172,14 @@
         }
         .btn-quick-login { background: var(--accent); color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-right: 5px; }
 
-        /* Modal styling for Forgot Password */
+        /* Modal styling */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 2000;
             display: none; align-items: center; justify-content: center; padding: 20px;
         }
         .modal-card {
-            background: var(--card-bg); width: 100%; max-width: 400px; border-radius: 16px;
+            background: var(--card-bg); width: 100%; max-width: 420px; border-radius: 16px;
             padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative; animation: fadeIn 0.3s ease;
         }
@@ -187,7 +194,8 @@
         aside {
             width: var(--sidebar-width); background: linear-gradient(180deg, var(--secondary), var(--secondary-hover));
             color: white; padding: 25px 20px; display: flex; flex-direction: column; justify-content: space-between;
-            position: fixed; height: 100vh; top: 0; right: 0; z-index: 100; box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+            position: fixed; height: 100vh; top: 0; right: 0; z-index: 999; box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+            transition: right 0.3s ease, left 0.3s ease;
         }
         body.ltr aside { right: auto; left: 0; box-shadow: 4px 0 20px rgba(0,0,0,0.08); }
 
@@ -286,6 +294,51 @@
         footer a { color: var(--secondary); text-decoration: none; font-weight: 600; margin: 0 5px; }
 
         .lang-en { display: none; }
+
+        /* ==================== MEDIA QUERIES FOR MOBILE ==================== */
+        @media (max-width: 768px) {
+            .btn-menu-toggle {
+                display: flex;
+            }
+
+            aside {
+                position: fixed;
+                right: -100%; /* إخفاء القائمة خارج الشاشة لللغة العربية */
+                top: 0;
+                width: 250px;
+                height: 100vh;
+                z-index: 999;
+                transition: right 0.3s ease, left 0.3s ease;
+            }
+
+            body.ltr aside {
+                right: auto;
+                left: -100%; /* إخفاء القائمة جهة اليسار للإنكليزية */
+            }
+
+            /* كلاس يفتح القائمة عند الضغط على الزر */
+            aside.open {
+                right: 0;
+            }
+
+            body.ltr aside.open {
+                left: 0;
+            }
+
+            main {
+                margin-right: 0 !important;
+                margin-left: 0 !important;
+                padding: 15px;
+                padding-top: 80px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid .full-width {
+                grid-column: span 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -297,6 +350,11 @@
 
     <!-- Top Global Bar -->
     <div class="top-bar-global">
+        <!-- زر الهامبرغر للموبايل -->
+        <button class="btn-menu-toggle" onclick="toggleSidebar()" title="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <div class="social-links-header">
             <a href="https://www.facebook.com/share/1VJAE8Ukyg/" target="_blank" class="social-link-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/teeb.express/" target="_blank" class="social-link-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -416,9 +474,38 @@
         </div>
     </div>
 
+    <!-- نافذة منبثقة لتحديث حالة الطلب بأسلوب خيارات مسدلة -->
+    <div id="status-modal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeStatusModal()">&times;</span>
+            <div class="card-title">
+                <i class="fa-solid fa-pen-to-square" style="color:var(--secondary);"></i>
+                <span class="lang-ar">تحديث حالة الشحنة والطلب</span>
+                <span class="lang-en">Update Order Status</span>
+            </div>
+            <form onsubmit="saveOrderStatus(event)" style="display:flex; flex-direction:column; gap:15px;">
+                <input type="hidden" id="status-order-id">
+                <div class="form-group">
+                    <label><span class="lang-ar">اختر الحالة الجديدة:</span><span class="lang-en">Select New Status:</span></label>
+                    <select id="status-select-options">
+                        <option value="قيد المراجعة والتدقيق">قيد المراجعة والتدقيق</option>
+                        <option value="تم الشراء والتعاقد">تم الشراء والتعاقد</option>
+                        <option value="البضاعة في الشحن الدولي">البضاعة في الشحن الدولي</option>
+                        <option value="وصلت إلى المخازن (العراق)">وصلت إلى المخازن (العراق)</option>
+                        <option value="تم التسليم للتاجر">تم التسليم للتاجر</option>
+                        <option value="ملغي / مرفوض">ملغي / مرفوض</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span class="lang-ar">حفظ وتحديث</span><span class="lang-en">Save Changes</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- 2. DASHBOARD PAGE -->
     <div id="dashboard-page">
-        <aside>
+        <aside id="main-sidebar">
             <div>
                 <div class="brand-logo">
                     <i class="fa-solid fa-ship"></i>
@@ -680,7 +767,7 @@
                 </table>
             </div>
 
-            <!-- قسم جديد خاص بالمدير العام لإدارة بيانات وحسابات التجار بالكامل -->
+            <!-- قسم إدارة بيانات وحسابات التجار بالكامل -->
             <div id="section-manager-traders" class="dashboard-section dashboard-card manager-only">
                 <div class="card-title">
                     <i class="fa-solid fa-users-gear" style="color:var(--secondary);"></i>
@@ -750,16 +837,42 @@
             { name: 'موظف الإدارة (افتراضي)', phone: '07111111111', pass: 'admin123', permission: 'صلاحيات كاملة', active: true }
         ];
 
+        /* دالة فتح وإغلاق القائمة الجانبية في الموبايل */
+        function toggleSidebar() {
+            document.querySelector('aside').classList.toggle('open');
+        }
+
         function openForgotModal() { document.getElementById('forgot-modal').style.display = 'flex'; }
         function closeForgotModal() { document.getElementById('forgot-modal').style.display = 'none'; }
 
-        // البرمجة الخاصة بتغيير كلمة المرور
+        function openStatusModal(orderId) {
+            const order = allOrders.find(o => o.id === orderId);
+            if (order) {
+                document.getElementById('status-order-id').value = orderId;
+                document.getElementById('status-select-options').value = order.status;
+                document.getElementById('status-modal').style.display = 'flex';
+            }
+        }
+        function closeStatusModal() { document.getElementById('status-modal').style.display = 'none'; }
+
+        function saveOrderStatus(e) {
+            e.preventDefault();
+            const orderId = Number(document.getElementById('status-order-id').value);
+            const selectedStatus = document.getElementById('status-select-options').value;
+            const order = allOrders.find(o => o.id === orderId);
+            if (order) {
+                order.status = selectedStatus;
+                localStorage.setItem('teeb_all_orders', JSON.stringify(allOrders));
+                renderDashboardViews();
+                closeStatusModal();
+            }
+        }
+
         function handleResetPassword(e) {
             e.preventDefault();
             const phone = normalizeNumber(document.getElementById('reset-phone').value);
             const newPass = document.getElementById('reset-new-pass').value;
 
-            // 1. الفحص هل الحساب لتاجر؟
             const savedTrader = JSON.parse(localStorage.getItem(`user_${phone}`));
             if (savedTrader) {
                 savedTrader.pass = newPass;
@@ -769,7 +882,6 @@
                 return;
             }
 
-            // 2. الفحص هل الحساب لموظف إدارة؟
             const admin = adminStaff.find(a => a.phone === phone);
             if (admin) {
                 admin.pass = newPass;
@@ -823,6 +935,11 @@
             navButtons.forEach(btn => btn.classList.remove('active'));
             if (btnElement) {
                 btnElement.classList.add('active');
+            }
+
+            // إغلاق القائمة تلقائياً بعد الاختيار على الموبايل
+            if (window.innerWidth <= 768) {
+                document.querySelector('aside').classList.remove('open');
             }
         }
 
@@ -886,7 +1003,6 @@
             const newTrader = { name: name, phone: phone, pass: pass, role: 'trader' };
             localStorage.setItem(`user_${phone}`, JSON.stringify(newTrader));
 
-            // إضافة الهاتف لسجل التجار كفهرس
             let traderIndex = JSON.parse(localStorage.getItem('teeb_traders_list')) || [];
             if(!traderIndex.includes(phone)) {
                 traderIndex.push(phone);
@@ -920,7 +1036,6 @@
             alert('تم إنشاء حساب موظف الإدارة بنجاح ومنحه الصلاحيات.');
         }
 
-        // تعديل بيانات موظف الإدارة من قبل المدير العام
         function editAdminDetails(phone) {
             const admin = adminStaff.find(a => a.phone === phone);
             if (admin) {
@@ -938,7 +1053,6 @@
             }
         }
 
-        // تعديل بيانات التاجر من قبل المدير العام
         function editTraderDetails(phone) {
             const trader = JSON.parse(localStorage.getItem(`user_${phone}`));
             if (trader) {
@@ -954,12 +1068,33 @@
             }
         }
 
+        function deleteTrader(phone) {
+            if (confirm('هل أنت متأكد من حذف حساب هذا التاجر كلياً من النظام؟')) {
+                localStorage.removeItem(`user_${phone}`);
+                let traderIndex = JSON.parse(localStorage.getItem('teeb_traders_list')) || [];
+                traderIndex = traderIndex.filter(p => p !== phone);
+                localStorage.setItem('teeb_traders_list', JSON.stringify(traderIndex));
+                renderTradersList();
+                
+                const currentUser = JSON.parse(localStorage.getItem('teeb_current_user'));
+                if (currentUser && currentUser.phone === phone) {
+                    handleLogout();
+                }
+            }
+        }
+
         function toggleAdminStatus(phone) {
             const admin = adminStaff.find(a => a.phone === phone);
             if (admin) {
                 admin.active = !admin.active;
                 localStorage.setItem('teeb_admin_staff', JSON.stringify(adminStaff));
                 renderAdminsList();
+
+                const currentUser = JSON.parse(localStorage.getItem('teeb_current_user'));
+                if (currentUser && currentUser.phone === phone && !admin.active) {
+                    alert('تم تعطيل حسابك من قبل المدير العام.');
+                    handleLogout();
+                }
             }
         }
 
@@ -968,6 +1103,11 @@
                 adminStaff = adminStaff.filter(a => a.phone !== phone);
                 localStorage.setItem('teeb_admin_staff', JSON.stringify(adminStaff));
                 renderAdminsList();
+
+                const currentUser = JSON.parse(localStorage.getItem('teeb_current_user'));
+                if (currentUser && currentUser.phone === phone) {
+                    handleLogout();
+                }
             }
         }
 
@@ -1016,7 +1156,7 @@
                 goodsCode: document.getElementById('order-goods-code').value || '-',
                 address: document.getElementById('order-address').value,
                 platform: document.getElementById('order-platform').value,
-                status: 'قيد المراجعة'
+                status: 'قيد المراجعة والتدقيق'
             };
 
             allOrders.unshift(newOrder);
@@ -1026,18 +1166,6 @@
             renderDashboardViews();
             alert('تم تقديم طلبك بنجاح وسوف تقوم الإدارة بمراجعته.');
             showSection('section-my-orders', document.querySelectorAll('.nav-btn')[2]);
-        }
-
-        function changeOrderStatus(orderId) {
-            const order = allOrders.find(o => o.id === orderId);
-            if (order) {
-                const nextStatus = prompt("أدخل الحالة الجديدة للطلب:", order.status);
-                if (nextStatus) {
-                    order.status = nextStatus;
-                    localStorage.setItem('teeb_all_orders', JSON.stringify(allOrders));
-                    renderDashboardViews();
-                }
-            }
         }
 
         function handleLogout() {
@@ -1106,7 +1234,7 @@
                         <td><span class="badge badge-admin">${adm.permission}</span></td>
                         <td>${statusBadge}</td>
                         <td>
-                            <button class="action-btn-edit" onclick="editAdminDetails('${adm.phone}')">تعديل البيانات ✏️</button>
+                            <button class="action-btn-edit" onclick="editAdminDetails('${adm.phone}')">تعديل ✏️</button>
                             <button class="action-btn" onclick="toggleAdminStatus('${adm.phone}')">${adm.active ? 'تعطيل' : 'تنشيط'}</button>
                             <button class="action-btn-danger" onclick="deleteAdmin('${adm.phone}')">حذف</button>
                         </td>
@@ -1136,7 +1264,8 @@
                             <td>${trader.phone}</td>
                             <td><code>${trader.pass}</code></td>
                             <td>
-                                <button class="action-btn-edit" onclick="editTraderDetails('${trader.phone}')">تعديل الحساب والكلمة ✏️</button>
+                                <button class="action-btn-edit" onclick="editTraderDetails('${trader.phone}')">تعديل ✏️</button>
+                                <button class="action-btn-danger" onclick="deleteTrader('${trader.phone}')">حذف الحساب</button>
                             </td>
                         </tr>
                     `;
@@ -1187,7 +1316,7 @@
                                 <td>${ord.goodsName}</td>
                                 <td>${ord.platform}</td>
                                 <td><span class="badge badge-pending">${ord.status}</span></td>
-                                <td><button class="action-btn" onclick="changeOrderStatus(${ord.id})">تحديث الحالة</button></td>
+                                <td><button class="action-btn" onclick="openStatusModal(${ord.id})">تحديث الحالة</button></td>
                             </tr>
                         `;
                     });
