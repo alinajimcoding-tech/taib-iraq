@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة طيب العراق للنقل واللوجيستيك</title>
+    <title class="lang-ar">شركة طيب العراق للنقل واللوجيستيك</title>
+    <title class="lang-en" style="display:none;">Teeb Iraq Transport and Logistics Company</title>
     <!-- استدعاء خط Readex Pro العصري من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- مكتبة أيقونات Font Awesome للتواصل الاجتماعي -->
@@ -17,29 +18,55 @@
         }
 
         body {
-            background-color: #f4f6fa;
-            color: #333;
+            background-color: #f8fafc;
+            color: #334155;
             direction: rtl;
             text-align: right;
         }
 
+        body.ltr {
+            direction: ltr;
+            text-align: left;
+        }
+
         /* Header Navigation */
         header {
-            background: linear-gradient(90deg, #6c5ce7, #513cd5);
+            background-color: #1E293B;
             padding: 15px 40px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+            box-shadow: 0 4px 15px rgba(30, 41, 59, 0.15);
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: white;
+            color: #ffffff;
             font-weight: 700;
             font-size: 22px;
+        }
+
+        /* Language Switcher Button Header */
+        .lang-switch-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-switch-btn:hover {
+            background-color: #ffffff;
+            color: #1E293B;
         }
 
         /* Main Layout */
@@ -58,12 +85,12 @@
         .hero-title h1 {
             font-size: 28px;
             font-weight: 700;
-            color: #2d3436;
+            color: #1E293B;
             margin-bottom: 8px;
         }
 
         .hero-title p {
-            color: #636e72;
+            color: #64748b;
             font-size: 14px;
         }
 
@@ -74,8 +101,7 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            border: 2px solid transparent;
-            background-clip: padding-box;
+            border: 2px solid #e2e8f0;
             position: relative;
         }
 
@@ -84,10 +110,10 @@
             position: absolute;
             top: -2px; bottom: -2px;
             left: -2px; right: -2px;
-            background: linear-gradient(135deg, #a29bfe, #6c5ce7, #d63031);
+            background: #1E293B;
             border-radius: 18px;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.15;
         }
 
         .card-header {
@@ -96,7 +122,7 @@
             gap: 10px;
             font-size: 19px;
             font-weight: 600;
-            color: #2d3436;
+            color: #1E293B;
             margin-bottom: 25px;
         }
 
@@ -120,7 +146,7 @@
         label {
             font-size: 13px;
             font-weight: 600;
-            color: #2d3436;
+            color: #1E293B;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -133,25 +159,26 @@
         input, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1.5px solid #e2e8f0;
+            border: 1.5px solid #cbd5e1;
             border-radius: 8px;
             font-size: 13px;
             outline: none;
             transition: all 0.3s ease;
-            background-color: #fdfdfd;
+            background-color: #f8fafc;
+            color: #1E293B;
         }
 
         input:focus, select:focus {
-            border-color: #6c5ce7;
-            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+            border-color: #1E293B;
+            box-shadow: 0 0 0 4px rgba(30, 41, 59, 0.1);
             background-color: #fff;
         }
 
         /* Buttons */
         .btn-submit {
             grid-column: span 2;
-            background: linear-gradient(90deg, #6c5ce7, #513cd5);
-            color: white;
+            background-color: #1E293B;
+            color: #ffffff;
             border: none;
             padding: 14px;
             border-radius: 8px;
@@ -160,11 +187,11 @@
             cursor: pointer;
             transition: 0.3s;
             margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25);
         }
 
         .btn-submit:hover {
-            opacity: 0.95;
+            background-color: #0f172a;
             transform: translateY(-2px);
         }
 
@@ -178,8 +205,8 @@
         }
 
         table th {
-            background-color: #6c5ce7;
-            color: white;
+            background-color: #1E293B;
+            color: #ffffff;
             padding: 12px;
             font-size: 13px;
             text-align: center;
@@ -187,7 +214,7 @@
 
         table td {
             padding: 12px;
-            border-bottom: 1px solid #edf2f7;
+            border-bottom: 1px solid #e2e8f0;
             text-align: center;
             font-size: 13px;
         }
@@ -197,7 +224,7 @@
         }
 
         .alibaba-link {
-            color: #6c5ce7;
+            color: #1E293B;
             text-decoration: none;
             font-weight: 600;
         }
@@ -206,15 +233,15 @@
             text-decoration: underline;
         }
 
-        .price { color: #27ae60; font-weight: 600; }
-        .moq { color: #e74c3c; font-weight: 600; }
-        .rating { color: #f39c12; font-weight: 600; }
-        .no-data { color: #a0aec0; font-style: italic; }
+        .price { color: #16a34a; font-weight: 600; }
+        .moq { color: #dc2626; font-weight: 600; }
+        .rating { color: #d97706; font-weight: 600; }
+        .no-data { color: #94a3b8; font-style: italic; }
 
         /* Footer & Social Media Icons */
         footer {
-            background: linear-gradient(90deg, #4834d4, #6c5ce7);
-            color: white;
+            background-color: #1E293B;
+            color: #ffffff;
             text-align: center;
             padding: 35px 20px;
             margin-top: 60px;
@@ -239,11 +266,11 @@
         }
 
         .social-icon {
-            color: white;
+            color: #ffffff;
             font-size: 22px;
             width: 42px;
             height: 42px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -253,21 +280,32 @@
         }
 
         .social-icon:hover {
-            background: white;
+            background: #ffffff;
+            color: #1E293B;
             transform: translateY(-3px);
         }
 
-        .social-icon.facebook:hover { color: #1877f2; }
-        .social-icon.instagram:hover { color: #e4405f; }
+        .social-icon.facebook:hover { color: #1877f2; background: #ffffff; }
+        .social-icon.instagram:hover { color: #e4405f; background: #ffffff; }
+
+        /* Utility classes for language control */
+        .lang-en { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation (تمت إزالة السفينة) -->
+    <!-- Header Navigation -->
     <header>
         <div class="brand">
-            طيب العراق
+            <span class="lang-ar">طيب العراق</span>
+            <span class="lang-en">Teeb Iraq</span>
         </div>
+        
+        <!-- Language Switcher Button -->
+        <button class="lang-switch-btn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i>
+            <span id="langBtnText">English</span>
+        </button>
     </header>
 
     <!-- Main Container -->
@@ -275,71 +313,135 @@
         
         <!-- Hero Header -->
         <div class="hero-title">
-            <h1>شركة طيب العراق للنقل واللوجيستيك</h1>
-            <p>خدمتك الموثوقة لاستيراد البضائع من أجود الموردين العالميين بأفضل الأسعار والسرعة</p>
+            <h1 class="lang-ar">شركة طيب العراق للنقل واللوجيستيك</h1>
+            <h1 class="lang-en">Teeb Iraq Transport and Logistics Company</h1>
+            
+            <p class="lang-ar">خدمتك الموثوقة لاستيراد البضائع من أجود الموردين العالميين بأفضل الأسعار والسرعة</p>
+            <p class="lang-en">Your trusted service for importing goods from the finest global suppliers at the best prices and speed</p>
         </div>
 
         <!-- 1. Form Card: طلب استيراد بضاعة -->
         <div class="card">
             <div class="card-header">
-                📋 طلب استيراد بضاعة
+                <span class="lang-ar">📋 طلب استيراد بضاعة</span>
+                <span class="lang-en">📋 Goods Import Request</span>
             </div>
 
             <form action="save_order.php" method="POST" class="form-grid">
                 
                 <div class="form-group">
-                    <label for="trader-name">👤 اسم التاجر <span class="req">*</span></label>
-                    <input type="text" id="trader-name" name="trader-name" placeholder="أدخل اسمك الكامل" required>
+                    <label for="trader-name">
+                        <span class="lang-ar">👤 اسم التاجر</span>
+                        <span class="lang-en">👤 Trader Name</span>
+                        <span class="req">*</span>
+                    </label>
+                    <input type="text" id="trader-name" name="trader-name" 
+                           data-placeholder-ar="أدخل اسمك الكامل" 
+                           data-placeholder-en="Enter your full name" 
+                           placeholder="أدخل اسمك الكامل" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="trader-phone">📱 رقم الهاتف <span class="req">*</span></label>
-                    <input type="tel" id="trader-phone" name="trader-phone" placeholder="أدخل رقم هاتفك" required>
+                    <label for="trader-phone">
+                        <span class="lang-ar">📱 رقم الهاتف</span>
+                        <span class="lang-en">📱 Phone Number</span>
+                        <span class="req">*</span>
+                    </label>
+                    <input type="tel" id="trader-phone" name="trader-phone" 
+                           data-placeholder-ar="أدخل رقم هاتفك" 
+                           data-placeholder-en="Enter your phone number" 
+                           placeholder="أدخل رقم هاتفك" required>
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="trader-address">📍 العنوان <span class="req">*</span></label>
-                    <input type="text" id="trader-address" name="trader-address" placeholder="أدخل عنوانك الكامل" required>
+                    <label for="trader-address">
+                        <span class="lang-ar">📍 العنوان</span>
+                        <span class="lang-en">📍 Address</span>
+                        <span class="req">*</span>
+                    </label>
+                    <input type="text" id="trader-address" name="trader-address" 
+                           data-placeholder-ar="أدخل عنوانك الكامل" 
+                           data-placeholder-en="Enter your full address" 
+                           placeholder="أدخل عنوانك الكامل" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="goods-name">📦 البضاعة المراد استيرادها <span class="req">*</span></label>
-                    <input type="text" id="goods-name" name="goods-name" placeholder="مثال: ساعات ذكية" required>
+                    <label for="goods-name">
+                        <span class="lang-ar">📦 البضاعة المراد استيرادها</span>
+                        <span class="lang-en">📦 Goods to be Imported</span>
+                        <span class="req">*</span>
+                    </label>
+                    <input type="text" id="goods-name" name="goods-name" 
+                           data-placeholder-ar="مثال: ساعات ذكية" 
+                           data-placeholder-en="Example: Smart watches" 
+                           placeholder="مثال: ساعات ذكية" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="goods-code">🔖 كود البضاعة</label>
-                    <input type="text" id="goods-code" name="goods-code" placeholder="أدخل كود البضاعة (إن وجد)">
+                    <label for="goods-code">
+                        <span class="lang-ar">🔖 كود البضاعة</span>
+                        <span class="lang-en">🔖 Goods Code</span>
+                    </label>
+                    <input type="text" id="goods-code" name="goods-code" 
+                           data-placeholder-ar="أدخل كود البضاعة (إن وجد)" 
+                           data-placeholder-en="Enter goods code (if available)" 
+                           placeholder="أدخل كود البضاعة (إن وجد)">
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="platform">🛒 برنامج التسوق</label>
+                    <label for="platform">
+                        <span class="lang-ar">🛒 برنامج التسوق</span>
+                        <span class="lang-en">🛒 Shopping App</span>
+                    </label>
                     <select id="platform" name="platform">
-                        <option value="علي بابا">علي بابا</option>
-                        <option value="علي اكسبريس">علي اكسبريس</option>
-                        <option value="أخرى">أخرى</option>
+                        <option value="علي بابا" class="lang-ar">علي بابا</option>
+                        <option value="علي بابا" class="lang-en" style="display:none;">Alibaba</option>
+                        
+                        <option value="علي اكسبريس" class="lang-ar">علي اكسبريس</option>
+                        <option value="علي اكسبريس" class="lang-en" style="display:none;">AliExpress</option>
+                        
+                        <option value="أخرى" class="lang-ar">أخرى</option>
+                        <option value="أخرى" class="lang-en" style="display:none;">Other</option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn-submit">📥 إرسال الطلب</button>
+                <button type="submit" class="btn-submit">
+                    <span class="lang-ar">📥 إرسال الطلب</span>
+                    <span class="lang-en">📥 Submit Request</span>
+                </button>
             </form>
         </div>
 
-        <!-- 2. Vendors Card: الموردون الموصى بهم -->
+        <!-- 2. Card: مصادر موثوقة -->
         <div class="card">
             <div class="card-header">
-                🏢 الموردون الموصى بهم
+                <span class="lang-ar">🛡️ مصادر موثوقة</span>
+                <span class="lang-en">🛡️ Trusted Sources</span>
             </div>
 
             <div class="form-group full-width">
-                <label for="productSelect">🔍 اختر المنتج:</label>
+                <label for="productSelect">
+                    <span class="lang-ar">🔍 اختر المنتج:</span>
+                    <span class="lang-en">🔍 Select Product:</span>
+                </label>
                 <select id="productSelect" onchange="showTraders()">
-                    <option value="">-- اختر المنتج --</option>
-                    <option value="smart watch">ساعة ذكية (Smart Watch)</option>
-                    <option value="projector">بروجكتر (Projector)</option>
-                    <option value="headphones">سماعات (Headphones)</option>
-                    <option value="cctv camera">كاميرات مراقبة (CCTV Camera)</option>
-                    <option value="monitor">شاشات عرض (Monitors)</option>
+                    <option value="" class="lang-ar">-- اختر المنتج --</option>
+                    <option value="" class="lang-en" style="display:none;">-- Select Product --</option>
+                    
+                    <option value="smart watch" class="lang-ar">ساعة ذكية (Smart Watch)</option>
+                    <option value="smart watch" class="lang-en" style="display:none;">Smart Watch</option>
+                    
+                    <option value="projector" class="lang-ar">بروجكتر (Projector)</option>
+                    <option value="projector" class="lang-en" style="display:none;">Projector</option>
+                    
+                    <option value="headphones" class="lang-ar">سماعات (Headphones)</option>
+                    <option value="headphones" class="lang-en" style="display:none;">Headphones</option>
+                    
+                    <option value="cctv camera" class="lang-ar">كاميرات مراقبة (CCTV Camera)</option>
+                    <option value="cctv camera" class="lang-en" style="display:none;">CCTV Camera</option>
+                    
+                    <option value="monitor" class="lang-ar">شاشات عرض (Monitors)</option>
+                    <option value="monitor" class="lang-en" style="display:none;">Monitors</option>
                 </select>
             </div>
 
@@ -347,11 +449,26 @@
                 <table id="tradersTable">
                     <thead>
                         <tr>
-                            <th>اسم الشركة / التاجر</th>
-                            <th>تفاصيل المنتج</th>
-                            <th>السعر</th>
-                            <th>الحد الأدنى (MOQ)</th>
-                            <th>التقييم</th>
+                            <th>
+                                <span class="lang-ar">اسم الشركة / التاجر</span>
+                                <span class="lang-en">Company / Trader Name</span>
+                            </th>
+                            <th>
+                                <span class="lang-ar">تفاصيل المنتج</span>
+                                <span class="lang-en">Product Details</span>
+                            </th>
+                            <th>
+                                <span class="lang-ar">السعر</span>
+                                <span class="lang-en">Price</span>
+                            </th>
+                            <th>
+                                <span class="lang-ar">الحد الأدنى (MOQ)</span>
+                                <span class="lang-en">Min. Order (MOQ)</span>
+                            </th>
+                            <th>
+                                <span class="lang-ar">التقييم</span>
+                                <span class="lang-en">Rating</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="tradersBody"></tbody>
@@ -363,11 +480,16 @@
 
     <!-- Footer -->
     <footer>
-        <h3>تواصل معنا</h3>
-        <p>البريد الإلكتروني: info@taib-iraq.com</p>
+        <h3 class="lang-ar">تواصل معنا</h3>
+        <h3 class="lang-en">Contact Us</h3>
+        
+        <p>
+            <span class="lang-ar">البريد الإلكتروني: info@taib-iraq.com</span>
+            <span class="lang-en">Email: info@taib-iraq.com</span>
+        </p>
         
         <div class="social-container">
-            <a href="https://www.facebook.com/share/1VJAE8Ukyg/" target="_blank" class="social-icon facebook" title="فيسبوك">
+            <a href="https://www.facebook.com/share/1VJAE8Ukyg/" target="_blank" class="social-icon facebook" title="فيسبوك / Facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
             <a href="https://www.instagram.com/teeb.express/" target="_blank" class="social-icon instagram" title="انستغرام teeb.express">
@@ -375,39 +497,83 @@
             </a>
         </div>
 
-        <p style="margin-top: 15px;">© 2026 شركة طيب العراق للنقل واللوجيستيك - جميع الحقوق محفوظة.</p>
+        <p style="margin-top: 15px;">
+            <span class="lang-ar">© 2026 شركة طيب العراق للنقل واللوجيستيك - جميع الحقوق محفوظة.</span>
+            <span class="lang-en">© 2026 Teeb Iraq Transport and Logistics Company - All rights reserved.</span>
+        </p>
     </footer>
 
-    <!-- Database Logic -->
+    <!-- Database & Language Logic -->
     <script>
+    let currentLang = 'ar';
+
     const productsDatabase = {
         "smart watch": [
-            { company_name: "Shenzhen Colmi Technology Co., Ltd.", product_title: "COLMI P71 Smartwatch Bluetooth Calling", price: "3,712 IQD", moq: "Min. order: 1 piece", rating: "★ 4.8" },
-            { company_name: "Shenzhen Phylink Electronics Co., Ltd.", product_title: "New Ultra Smart Watch Series 8 49mm NFC", price: "2,227 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.6" },
-            { company_name: "Guangzhou Lince Technology Co., Ltd.", product_title: "W68 Ultra Max Smart Watch 2.2 inch IPS", price: "5,197 IQD", moq: "Min. order: 1 piece", rating: "★ 4.9" },
-            { company_name: "Yiwu City Jiaye E-Commerce Firm", product_title: "T800 Ultra Smart Watch Series 8 Waterproof", price: "1,856 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.4" }
+            { company_name: "Shenzhen Colmi Technology Co., Ltd.", product_title: "COLMI P71 Smartwatch Bluetooth Calling", price: "3,712 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.8", ratingScore: 4.8 },
+            { company_name: "Shenzhen Phylink Electronics Co., Ltd.", product_title: "New Ultra Smart Watch Series 8 49mm NFC", price: "2,227 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.6", ratingScore: 4.6 },
+            { company_name: "Guangzhou Lince Technology Co., Ltd.", product_title: "W68 Ultra Max Smart Watch 2.2 inch IPS", price: "5,197 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9", ratingScore: 4.9 },
+            { company_name: "Yiwu City Jiaye E-Commerce Firm", product_title: "T800 Ultra Smart Watch Series 8 Waterproof", price: "1,856 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.4", ratingScore: 4.4 }
         ],
         "projector": [
-            { company_name: "Shenzhen Touyinger Technology Co., Ltd.", product_title: "TouYinger Q10 Full HD 1080P Projector 9500 Lumens", price: "180,000 IQD", moq: "Min. order: 1 piece", rating: "★ 4.9" },
-            { company_name: "Guangzhou Wanbo Electronic Technology", product_title: "Wanbo T2 Max Smart Mini Projector Portable 4K", price: "110,000 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.7" },
-            { company_name: "Shenzhen Magcubic Optoelectronics", product_title: "HY300 Android 11 Smart Projector Dual WiFi6", price: "50,000 IQD", moq: "Min. order: 2 pieces", rating: "★ 4.8" }
+            { company_name: "Shenzhen Touyinger Technology Co., Ltd.", product_title: "TouYinger Q10 Full HD 1080P Projector 9500 Lumens", price: "180,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9", ratingScore: 4.9 },
+            { company_name: "Guangzhou Wanbo Electronic Technology", product_title: "Wanbo T2 Max Smart Mini Projector Portable 4K", price: "110,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.7", ratingScore: 4.7 },
+            { company_name: "Shenzhen Magcubic Optoelectronics", product_title: "HY300 Android 11 Smart Projector Dual WiFi6", price: "50,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.8", ratingScore: 4.8 }
         ],
         "headphones": [
-            { company_name: "Shenzhen Linx Technology Co., Ltd.", product_title: "Headset Stereo Headphones", price: "IQD 9,120-9,473", moq: "Min. order: 1 piece", rating: "★ 4.5 (85)" },
-            { company_name: "Guangzhou Opsmen Tech Co., Ltd.", product_title: "Tactical Noise Cancelling Headset", price: "IQD 41,143-91,444", moq: "Min. order: 2 pieces", rating: "★ 5.0 (9)" },
-            { company_name: "Shenzhen Remax Technology Co., Ltd.", product_title: "Remax Wireless Headset", price: "IQD 5,880-7,186", moq: "Min. order: 6 pieces", rating: "★ 4.8 (97)" }
+            { company_name: "Shenzhen Linx Technology Co., Ltd.", product_title: "Headset Stereo Headphones", price: "IQD 9,120-9,473", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.5 (85)", ratingScore: 4.5 },
+            { company_name: "Guangzhou Opsmen Tech Co., Ltd.", product_title: "Tactical Noise Cancelling Headset", price: "IQD 41,143-91,444", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 5.0 (9)", ratingScore: 5.0 },
+            { company_name: "Shenzhen Remax Technology Co., Ltd.", product_title: "Remax Wireless Headset", price: "IQD 5,880-7,186", moq_ar: "الحد الأدنى للطلب: 6 قطع", moq_en: "Min. order: 6 pieces", rating: "★ 4.8 (97)", ratingScore: 4.8 }
         ],
         "cctv camera": [
-            { company_name: "HTW TECH LIMITED", product_title: "Professional HD Security CCTV Camera", price: "IQD 104,261-130,391", moq: "Min. order: 1 piece", rating: "★ 4.9 (88)" },
-            { company_name: "Shenzhen Hiseeu Technolgy Co., Ltd.", product_title: "Hiseeu Wireless Security Camera System", price: "IQD 142,411-342,308", moq: "Min. order: 1 set", rating: "★ 4.7 (83)" },
-            { company_name: "Shenzhen Conda Smart Technology Co., Ltd.", product_title: "Conda Solar Powered Wireless CCTV Camera", price: "IQD 58,663-60,754", moq: "Min. order: 2 pieces", rating: "★ 5.0 (20)" }
+            { company_name: "HTW TECH LIMITED", product_title: "Professional HD Security CCTV Camera", price: "IQD 104,261-130,391", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9 (88)", ratingScore: 4.9 },
+            { company_name: "Shenzhen Hiseeu Technolgy Co., Ltd.", product_title: "Hiseeu Wireless Security Camera System", price: "IQD 142,411-342,308", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 4.7 (83)", ratingScore: 4.7 },
+            { company_name: "Shenzhen Conda Smart Technology Co., Ltd.", product_title: "Conda Solar Powered Wireless CCTV Camera", price: "IQD 58,663-60,754", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 5.0 (20)", ratingScore: 5.0 }
         ],
         "monitor": [
-            { company_name: "Shenzhen Refee Technology Co., Ltd.", product_title: "LCD Commercial Display / Digital Signage Monitor", price: "IQD 235,174-653,259", moq: "Min. order: 1 piece", rating: "★ 4.9 (30)" },
-            { company_name: "Shenzhen Cosun Sign Smart-Tech Co., Ltd.", product_title: "Smart Interactive Touch Display Screen", price: "IQD 1,045,215-1,567,822", moq: "Min. order: 1 set", rating: "★ 5.0 (4)" },
-            { company_name: "Guangzhou Hushida Electronic Co., Ltd.", product_title: "Hushida Digital Advertising Display Board", price: "IQD 979,889-2,286,406", moq: "Min. order: 1 set", rating: "★ 5.0 (10)" }
+            { company_name: "Shenzhen Refee Technology Co., Ltd.", product_title: "LCD Commercial Display / Digital Signage Monitor", price: "IQD 235,174-653,259", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9 (30)", ratingScore: 4.9 },
+            { company_name: "Shenzhen Cosun Sign Smart-Tech Co., Ltd.", product_title: "Smart Interactive Touch Display Screen", price: "IQD 1,045,215-1,567,822", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 5.0 (4)", ratingScore: 5.0 },
+            { company_name: "Guangzhou Hushida Electronic Co., Ltd.", product_title: "Hushida Digital Advertising Display Board", price: "IQD 979,889-2,286,406", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 5.0 (10)", ratingScore: 5.0 }
         ]
     };
+
+    function toggleLanguage() {
+        const arElements = document.querySelectorAll('.lang-ar');
+        const enElements = document.querySelectorAll('.lang-en');
+        const btnText = document.getElementById('langBtnText');
+        const inputs = document.querySelectorAll('input[data-placeholder-ar]');
+
+        if (currentLang === 'ar') {
+            arElements.forEach(el => el.style.display = 'none');
+            enElements.forEach(el => el.style.display = el.tagName === 'OPTION' || el.tagName === 'SPAN' || el.tagName === 'TITLE' ? 'inline' : 'block');
+            
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            document.body.classList.add('ltr');
+            
+            inputs.forEach(input => {
+                input.placeholder = input.getAttribute('data-placeholder-en');
+            });
+
+            btnText.textContent = 'العربية';
+            currentLang = 'en';
+        } else {
+            enElements.forEach(el => el.style.display = 'none');
+            arElements.forEach(el => el.style.display = el.tagName === 'OPTION' || el.tagName === 'SPAN' || el.tagName === 'TITLE' ? 'inline' : 'block');
+            
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            document.body.classList.remove('ltr');
+            
+            inputs.forEach(input => {
+                input.placeholder = input.getAttribute('data-placeholder-ar');
+            });
+
+            btnText.textContent = 'English';
+            currentLang = 'ar';
+        }
+
+        showTraders();
+    }
 
     function showTraders() {
         const selectedProduct = document.getElementById("productSelect").value;
@@ -417,12 +583,15 @@
         tbody.innerHTML = "";
 
         if (selectedProduct) {
-            const traders = productsDatabase[selectedProduct] || [];
+            let traders = productsDatabase[selectedProduct] ? [...productsDatabase[selectedProduct]] : [];
+
+            traders.sort((a, b) => b.ratingScore - a.ratingScore);
 
             if (traders.length > 0) {
                 traders.forEach(trader => {
                     const searchQuery = encodeURIComponent(`${trader.product_title} ${trader.company_name}`);
                     const alibabaUrl = `https://www.alibaba.com/trade/search?SearchText=${searchQuery}`;
+                    const moqText = currentLang === 'ar' ? trader.moq_ar : trader.moq_en;
 
                     const row = `
                         <tr>
@@ -437,14 +606,17 @@
                                 </a>
                             </td>
                             <td class="price">${trader.price}</td>
-                            <td class="moq">${trader.moq}</td>
+                            <td class="moq">${moqText}</td>
                             <td class="rating">${trader.rating}</td>
                         </tr>
                     `;
                     tbody.innerHTML += row;
                 });
             } else {
-                tbody.innerHTML = `<tr><td colspan="5" class="no-data">لا توجد بيانات مضافة حالياً لهذا المنتج.</td></tr>`;
+                const noDataMsg = currentLang === 'ar' 
+                    ? 'لا توجد بيانات مضافة حالياً لهذا المنتج.' 
+                    : 'No data currently available for this product.';
+                tbody.innerHTML = `<tr><td colspan="5" class="no-data">${noDataMsg}</td></tr>`;
             }
             container.style.display = "block";
         } else {
