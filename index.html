@@ -323,16 +323,16 @@
         <!-- 1. Form Card: طلب استيراد بضاعة -->
         <div class="card">
             <div class="card-header">
-                <span class="lang-ar">📋 طلب استيراد بضاعة</span>
-                <span class="lang-en">📋 Goods Import Request</span>
+                <span class="lang-ar">طلب استيراد بضاعة</span>
+                <span class="lang-en">Goods Import Request</span>
             </div>
 
             <form action="save_order.php" method="POST" class="form-grid">
                 
                 <div class="form-group">
                     <label for="trader-name">
-                        <span class="lang-ar">👤 اسم التاجر</span>
-                        <span class="lang-en">👤 Trader Name</span>
+                        <span class="lang-ar">اسم التاجر</span>
+                        <span class="lang-en">Trader Name</span>
                         <span class="req">*</span>
                     </label>
                     <input type="text" id="trader-name" name="trader-name" 
@@ -343,8 +343,8 @@
 
                 <div class="form-group">
                     <label for="trader-phone">
-                        <span class="lang-ar">📱 رقم الهاتف</span>
-                        <span class="lang-en">📱 Phone Number</span>
+                        <span class="lang-ar">رقم الهاتف</span>
+                        <span class="lang-en">Phone Number</span>
                         <span class="req">*</span>
                     </label>
                     <input type="tel" id="trader-phone" name="trader-phone" 
@@ -355,8 +355,8 @@
 
                 <div class="form-group full-width">
                     <label for="trader-address">
-                        <span class="lang-ar">📍 العنوان</span>
-                        <span class="lang-en">📍 Address</span>
+                        <span class="lang-ar">العنوان</span>
+                        <span class="lang-en">Address</span>
                         <span class="req">*</span>
                     </label>
                     <input type="text" id="trader-address" name="trader-address" 
@@ -367,8 +367,8 @@
 
                 <div class="form-group">
                     <label for="goods-name">
-                        <span class="lang-ar">📦 البضاعة المراد استيرادها</span>
-                        <span class="lang-en">📦 Goods to be Imported</span>
+                        <span class="lang-ar">البضاعة المراد استيرادها</span>
+                        <span class="lang-en">Goods to be Imported</span>
                         <span class="req">*</span>
                     </label>
                     <input type="text" id="goods-name" name="goods-name" 
@@ -379,8 +379,8 @@
 
                 <div class="form-group">
                     <label for="goods-code">
-                        <span class="lang-ar">🔖 كود البضاعة</span>
-                        <span class="lang-en">🔖 Goods Code</span>
+                        <span class="lang-ar">كود البضاعة</span>
+                        <span class="lang-en">Goods Code</span>
                     </label>
                     <input type="text" id="goods-code" name="goods-code" 
                            data-placeholder-ar="أدخل كود البضاعة (إن وجد)" 
@@ -390,8 +390,8 @@
 
                 <div class="form-group full-width">
                     <label for="platform">
-                        <span class="lang-ar">🛒 برنامج التسوق</span>
-                        <span class="lang-en">🛒 Shopping App</span>
+                        <span class="lang-ar">برنامج التسوق</span>
+                        <span class="lang-en">Shopping App</span>
                     </label>
                     <select id="platform" name="platform">
                         <option value="علي بابا" class="lang-ar">علي بابا</option>
@@ -406,8 +406,8 @@
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    <span class="lang-ar">📥 إرسال الطلب</span>
-                    <span class="lang-en">📥 Submit Request</span>
+                    <span class="lang-ar">إرسال الطلب</span>
+                    <span class="lang-en">Submit Request</span>
                 </button>
             </form>
         </div>
@@ -415,14 +415,14 @@
         <!-- 2. Card: مصادر موثوقة -->
         <div class="card">
             <div class="card-header">
-                <span class="lang-ar">🛡️ مصادر موثوقة</span>
-                <span class="lang-en">🛡️ Trusted Sources</span>
+                <span class="lang-ar">مصادر موثوقة</span>
+                <span class="lang-en">Trusted Sources</span>
             </div>
 
             <div class="form-group full-width">
                 <label for="productSelect">
-                    <span class="lang-ar">🔍 اختر المنتج:</span>
-                    <span class="lang-en">🔍 Select Product:</span>
+                    <span class="lang-ar">اختر المنتج:</span>
+                    <span class="lang-en">Select Product:</span>
                 </label>
                 <select id="productSelect" onchange="showTraders()">
                     <option value="" class="lang-ar">-- اختر المنتج --</option>
@@ -509,30 +509,30 @@
 
     const productsDatabase = {
         "smart watch": [
-            { company_name: "Shenzhen Colmi Technology Co., Ltd.", product_title: "COLMI P71 Smartwatch Bluetooth Calling", price: "3,712 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.8", ratingScore: 4.8 },
-            { company_name: "Shenzhen Phylink Electronics Co., Ltd.", product_title: "New Ultra Smart Watch Series 8 49mm NFC", price: "2,227 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.6", ratingScore: 4.6 },
-            { company_name: "Guangzhou Lince Technology Co., Ltd.", product_title: "W68 Ultra Max Smart Watch 2.2 inch IPS", price: "5,197 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9", ratingScore: 4.9 },
-            { company_name: "Yiwu City Jiaye E-Commerce Firm", product_title: "T800 Ultra Smart Watch Series 8 Waterproof", price: "1,856 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.4", ratingScore: 4.4 }
+            { company_name: "Shenzhen Colmi Technology Co., Ltd.", product_title: "COLMI P71 Smartwatch Bluetooth Calling", price: "3,712 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.8", ratingScore: 4.8 },
+            { company_name: "Shenzhen Phylink Electronics Co., Ltd.", product_title: "New Ultra Smart Watch Series 8 49mm NFC", price: "2,227 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "4.6", ratingScore: 4.6 },
+            { company_name: "Guangzhou Lince Technology Co., Ltd.", product_title: "W68 Ultra Max Smart Watch 2.2 inch IPS", price: "5,197 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.9", ratingScore: 4.9 },
+            { company_name: "Yiwu City Jiaye E-Commerce Firm", product_title: "T800 Ultra Smart Watch Series 8 Waterproof", price: "1,856 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "4.4", ratingScore: 4.4 }
         ],
         "projector": [
-            { company_name: "Shenzhen Touyinger Technology Co., Ltd.", product_title: "TouYinger Q10 Full HD 1080P Projector 9500 Lumens", price: "180,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9", ratingScore: 4.9 },
-            { company_name: "Guangzhou Wanbo Electronic Technology", product_title: "Wanbo T2 Max Smart Mini Projector Portable 4K", price: "110,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.7", ratingScore: 4.7 },
-            { company_name: "Shenzhen Magcubic Optoelectronics", product_title: "HY300 Android 11 Smart Projector Dual WiFi6", price: "50,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 4.8", ratingScore: 4.8 }
+            { company_name: "Shenzhen Touyinger Technology Co., Ltd.", product_title: "TouYinger Q10 Full HD 1080P Projector 9500 Lumens", price: "180,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.9", ratingScore: 4.9 },
+            { company_name: "Guangzhou Wanbo Electronic Technology", product_title: "Wanbo T2 Max Smart Mini Projector Portable 4K", price: "110,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "4.7", ratingScore: 4.7 },
+            { company_name: "Shenzhen Magcubic Optoelectronics", product_title: "HY300 Android 11 Smart Projector Dual WiFi6", price: "50,000 IQD", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "4.8", ratingScore: 4.8 }
         ],
         "headphones": [
-            { company_name: "Shenzhen Linx Technology Co., Ltd.", product_title: "Headset Stereo Headphones", price: "IQD 9,120-9,473", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.5 (85)", ratingScore: 4.5 },
-            { company_name: "Guangzhou Opsmen Tech Co., Ltd.", product_title: "Tactical Noise Cancelling Headset", price: "IQD 41,143-91,444", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 5.0 (9)", ratingScore: 5.0 },
-            { company_name: "Shenzhen Remax Technology Co., Ltd.", product_title: "Remax Wireless Headset", price: "IQD 5,880-7,186", moq_ar: "الحد الأدنى للطلب: 6 قطع", moq_en: "Min. order: 6 pieces", rating: "★ 4.8 (97)", ratingScore: 4.8 }
+            { company_name: "Shenzhen Linx Technology Co., Ltd.", product_title: "Headset Stereo Headphones", price: "IQD 9,120-9,473", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.5 (85)", ratingScore: 4.5 },
+            { company_name: "Guangzhou Opsmen Tech Co., Ltd.", product_title: "Tactical Noise Cancelling Headset", price: "IQD 41,143-91,444", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "5.0 (9)", ratingScore: 5.0 },
+            { company_name: "Shenzhen Remax Technology Co., Ltd.", product_title: "Remax Wireless Headset", price: "IQD 5,880-7,186", moq_ar: "الحد الأدنى للطلب: 6 قطع", moq_en: "Min. order: 6 pieces", rating: "4.8 (97)", ratingScore: 4.8 }
         ],
         "cctv camera": [
-            { company_name: "HTW TECH LIMITED", product_title: "Professional HD Security CCTV Camera", price: "IQD 104,261-130,391", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9 (88)", ratingScore: 4.9 },
-            { company_name: "Shenzhen Hiseeu Technolgy Co., Ltd.", product_title: "Hiseeu Wireless Security Camera System", price: "IQD 142,411-342,308", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 4.7 (83)", ratingScore: 4.7 },
-            { company_name: "Shenzhen Conda Smart Technology Co., Ltd.", product_title: "Conda Solar Powered Wireless CCTV Camera", price: "IQD 58,663-60,754", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "★ 5.0 (20)", ratingScore: 5.0 }
+            { company_name: "HTW TECH LIMITED", product_title: "Professional HD Security CCTV Camera", price: "IQD 104,261-130,391", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.9 (88)", ratingScore: 4.9 },
+            { company_name: "Shenzhen Hiseeu Technolgy Co., Ltd.", product_title: "Hiseeu Wireless Security Camera System", price: "IQD 142,411-342,308", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "4.7 (83)", ratingScore: 4.7 },
+            { company_name: "Shenzhen Conda Smart Technology Co., Ltd.", product_title: "Conda Solar Powered Wireless CCTV Camera", price: "IQD 58,663-60,754", moq_ar: "الحد الأدنى للطلب: قطعتان", moq_en: "Min. order: 2 pieces", rating: "5.0 (20)", ratingScore: 5.0 }
         ],
         "monitor": [
-            { company_name: "Shenzhen Refee Technology Co., Ltd.", product_title: "LCD Commercial Display / Digital Signage Monitor", price: "IQD 235,174-653,259", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "★ 4.9 (30)", ratingScore: 4.9 },
-            { company_name: "Shenzhen Cosun Sign Smart-Tech Co., Ltd.", product_title: "Smart Interactive Touch Display Screen", price: "IQD 1,045,215-1,567,822", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 5.0 (4)", ratingScore: 5.0 },
-            { company_name: "Guangzhou Hushida Electronic Co., Ltd.", product_title: "Hushida Digital Advertising Display Board", price: "IQD 979,889-2,286,406", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "★ 5.0 (10)", ratingScore: 5.0 }
+            { company_name: "Shenzhen Refee Technology Co., Ltd.", product_title: "LCD Commercial Display / Digital Signage Monitor", price: "IQD 235,174-653,259", moq_ar: "الحد الأدنى للطلب: قطعة واحدة", moq_en: "Min. order: 1 piece", rating: "4.9 (30)", ratingScore: 4.9 },
+            { company_name: "Shenzhen Cosun Sign Smart-Tech Co., Ltd.", product_title: "Smart Interactive Touch Display Screen", price: "IQD 1,045,215-1,567,822", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "5.0 (4)", ratingScore: 5.0 },
+            { company_name: "Guangzhou Hushida Electronic Co., Ltd.", product_title: "Hushida Digital Advertising Display Board", price: "IQD 979,889-2,286,406", moq_ar: "الحد الأدنى للطلب: طقم واحد", moq_en: "Min. order: 1 set", rating: "5.0 (10)", ratingScore: 5.0 }
         ]
     };
 
@@ -597,12 +597,12 @@
                         <tr>
                             <td>
                                 <a href="${alibabaUrl}" target="_blank" class="alibaba-link">
-                                    🏢 ${trader.company_name}
+                                    ${trader.company_name}
                                 </a>
                             </td>
                             <td>
                                 <a href="${alibabaUrl}" target="_blank" class="alibaba-link">
-                                    📦 ${trader.product_title}
+                                    ${trader.product_title}
                                 </a>
                             </td>
                             <td class="price">${trader.price}</td>
