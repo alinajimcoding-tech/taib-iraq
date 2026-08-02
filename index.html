@@ -145,6 +145,16 @@
             color: var(--copart-blue);
         }
 
+        /* Mobile Menu Toggle Button */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
         /* Hero Banner */
         .hero {
             background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(17, 17, 17, 0.85)), 
@@ -676,9 +686,26 @@
             background-color: var(--copart-dark-blue);
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
             .nav-menu {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--header-bg);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 15px 5%;
+                gap: 10px;
+                border-bottom: 2px solid var(--copart-blue);
+            }
+            .nav-menu.active {
+                display: flex;
             }
             .hero h1 {
                 font-size: 1.8rem;
@@ -718,14 +745,17 @@
     <header>
         <div class="navbar">
             <a href="#" class="logo" data-ar="شركة <span>طيب العراق</span>" data-en="Taib Iraq <span>Logistics</span>">شركة <span>طيب العراق</span></a>
-            <ul class="nav-menu">
-                <li><a href="#" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
-                <li><a href="#why-us" data-ar="لماذا نحن؟" data-en="Why Us?">لماذا نحن؟</a></li>
-                <li><a href="#platforms" data-ar="المنصات العالمية" data-en="Global Platforms">المنصات العالمية</a></li>
-                <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
-                <li><a href="#tracking" data-ar="تتبع الشحنة" data-en="Tracking">تتبع الشحنة</a></li>
-                <li><a href="javascript:void(0)" onclick="openQuoteModal()" data-ar="طلب تسعيرة" data-en="Request Quotation">طلب تسعيرة</a></li>
-                <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="closeMobileMenu()" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#why-us" onclick="closeMobileMenu()" data-ar="لماذا نحن؟" data-en="Why Us?">لماذا نحن؟</a></li>
+                <li><a href="#platforms" onclick="closeMobileMenu()" data-ar="المنصات العالمية" data-en="Global Platforms">المنصات العالمية</a></li>
+                <li><a href="#services" onclick="closeMobileMenu()" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                <li><a href="#tracking" onclick="closeMobileMenu()" data-ar="تتبع الشحنة" data-en="Tracking">تتبع الشحنة</a></li>
+                <li><a href="javascript:void(0)" onclick="openQuoteModal(); closeMobileMenu();" data-ar="طلب تسعيرة" data-en="Request Quotation">طلب تسعيرة</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
             </ul>
         </div>
     </header>
@@ -788,7 +818,7 @@
             <!-- Alibaba -->
             <div class="platform-card">
                 <div class="platform-logo-box">
-                    <img src="alibaba.png.jpg" alt="Alibaba Logo" class="platform-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Alibaba_Group_logo.svg" alt="Alibaba Logo" class="platform-logo-img">
                 </div>
                 <h3>Alibaba</h3>
                 <p data-ar="نستلم شحنات الجملة من الموردين في الصين مع فحص الجودة من المصنع." data-en="Receiving wholesale shipments from China suppliers with factory inspection.">نستلم شحنات الجملة من الموردين في الصين مع فحص الجودة من المصنع.</p>
@@ -801,7 +831,7 @@
             <!-- AliExpress -->
             <div class="platform-card">
                 <div class="platform-logo-box">
-                    <img src="aliexpress.png.png" alt="AliExpress Logo" class="platform-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/AliExpress_logo.svg" alt="AliExpress Logo" class="platform-logo-img">
                 </div>
                 <h3>AliExpress</h3>
                 <p data-ar="تجميع الطرود والشحنات التجارية والجزئية وتوصيلها حتى باب منزلك." data-en="Consolidating parcels and commercial shipments straight to your doorstep.">تجميع الطرود والشحنات التجارية والجزئية وتوصيلها حتى باب منزلك.</p>
@@ -1003,7 +1033,29 @@
             }
         }
 
-        // 3. النافذة المنبثقة Modal
+        // 3. إدارة قائمة الهواتف الذكية (Mobile Menu)
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            navMenu.classList.toggle('active');
+
+            if (navMenu.classList.contains('active')) {
+                menuIcon.className = 'fas fa-times';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+            }
+        }
+
+        function closeMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuIcon.className = 'fas fa-bars';
+            }
+        }
+
+        // 4. النافذة المنبثقة Modal
         function openQuoteModal(platformName = '') {
             const modal = document.getElementById('quoteModal');
             const originSelect = document.getElementById('originCountry');
@@ -1023,14 +1075,21 @@
             document.getElementById('quoteModal').style.display = 'none';
         }
 
+        // إغلاق النافذة عند النقر خارجها أو الضغط على Esc
         window.onclick = function(event) {
             const modal = document.getElementById('quoteModal');
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
-        }
+        };
 
-        // 4. تتبع الشحنات بفتح الواتساب مباشرة
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeQuoteModal();
+            }
+        });
+
+        // 5. تتبع الشحنات بفتح الواتساب مباشرة
         function trackShipment() {
             const trackNumber = document.getElementById('trackInput').value;
             if(trackNumber) {
@@ -1039,7 +1098,7 @@
             }
         }
 
-        // 5. إرسال الاستمارة للواتساب
+        // 6. إرسال الاستمارة للواتساب
         function submitQuoteForm(e) {
             e.preventDefault();
             
