@@ -426,7 +426,7 @@
         }
 
         .platform-logo-box {
-            height: 90px;
+            height: 110px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -435,11 +435,12 @@
             background-color: #ffffff;
             border-radius: 8px;
             padding: 10px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
         }
 
         .platform-logo-svg {
-            max-height: 60px;
-            width: 80%;
+            max-height: 85px;
+            width: 90%;
         }
 
         .platform-card h3 {
@@ -455,11 +456,18 @@
             margin-bottom: 20px;
         }
 
+        .platform-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
         .btn-platform-action {
             background-color: var(--copart-blue);
             color: var(--white);
             border: none;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 6px;
             font-size: 1rem;
             font-weight: bold;
@@ -472,6 +480,31 @@
 
         .btn-platform-action:hover {
             background-color: var(--copart-dark-blue);
+        }
+
+        .btn-platform-visit {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-platform-visit:hover {
+            border-color: var(--copart-blue);
+            background-color: rgba(0, 86, 179, 0.05);
+            color: var(--copart-blue);
         }
 
         /* Services Section */
@@ -831,8 +864,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61592644083096&rdid=9KH36mPXq5P9A2nE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1VJAE8Ukyg%2F#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/teeb.express/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="top-controls">
             <button class="theme-toggle-btn" onclick="toggleDarkMode()">
@@ -910,62 +943,88 @@
         </div>
     </section>
 
-    <!-- Global Import Platforms Section (SVG Logos 100% Reliable) -->
+    <!-- Global Import Platforms Section -->
     <section class="platforms-section" id="platforms">
         <h2 data-ar="نستورد ونشحن من أكبر المنصات العالمية" data-en="Import & Ship From Major Global Platforms">نستورد ونشحن من أكبر المنصات العالمية</h2>
         <p class="subtitle" data-ar="تسوّق من أي مكان، ونحن نتكفل بالإجراءات اللوجستية والشحن إلى العراق" data-en="Shop from anywhere, and we handle all logistics to Iraq">تسوّق من أي مكان، ونحن نتكفل بالإجراءات اللوجستية والشحن إلى العراق</p>
         <div class="platforms-grid">
-            <!-- Alibaba SVG Logo -->
+            
+            <!-- Alibaba -->
             <div class="platform-card alibaba">
                 <div class="platform-logo-box">
-                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#FF6A00">Alibaba.com</text>
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="140" fill="#FF6A00">Alibaba.com</text>
                     </svg>
                 </div>
                 <h3>Alibaba</h3>
                 <p data-ar="للشحن التجاري وبكميات كبيرة من المصانع الصينية مباشرة." data-en="For commercial shipping and bulk orders from Chinese factories directly.">للشحن التجاري وبكميات كبيرة من المصانع الصينية مباشرة.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('علي بابا')" data-ar="شحن من علي بابا" data-en="Ship from Alibaba">شحن من علي بابا</button>
+                <div class="platform-buttons">
+                    <button class="btn-platform-action" onclick="openQuoteModal('علي بابا')" data-ar="شحن من علي بابا" data-en="Ship from Alibaba">شحن من علي بابا</button>
+                    <a href="https://www.alibaba.com" target="_blank" class="btn-platform-visit">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-ar="زيارة المنصة" data-en="Visit Platform">زيارة المنصة</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- AliExpress SVG Logo -->
+            <!-- AliExpress -->
             <div class="platform-card aliexpress">
                 <div class="platform-logo-box">
-                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#E62E04">AliExpress</text>
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="140" fill="#E62E04">AliExpress</text>
                     </svg>
                 </div>
                 <h3>AliExpress</h3>
                 <p data-ar="لشحن المنتجات الفردية والمشتريات الشخصية والكميات البسيطة." data-en="For individual products and personal purchases in small quantities.">لشحن المنتجات الفردية والمشتريات الشخصية والكميات البسيطة.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('علي إكسبريس')" data-ar="شحن من علي إكسبريس" data-en="Ship from AliExpress">شحن من علي إكسبريس</button>
+                <div class="platform-buttons">
+                    <button class="btn-platform-action" onclick="openQuoteModal('علي إكسبريس')" data-ar="شحن من علي إكسبريس" data-en="Ship from AliExpress">شحن من علي إكسبريس</button>
+                    <a href="https://www.aliexpress.com" target="_blank" class="btn-platform-visit">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-ar="زيارة المنصة" data-en="Visit Platform">زيارة المنصة</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Amazon SVG Logo -->
+            <!-- Amazon -->
             <div class="platform-card amazon">
                 <div class="platform-logo-box">
-                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#111111">amazon</text>
-                        <path d="M 280 210 Q 500 270 720 210" stroke="#FF9900" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="150" fill="#111111">amazon</text>
+                        <path d="M 220 200 Q 500 270 780 200" stroke="#FF9900" stroke-width="24" fill="none" stroke-linecap="round"/>
                     </svg>
                 </div>
                 <h3>Amazon</h3>
                 <p data-ar="شحن مراجعاتك من كافة فروع أمازون (أمريكا، الإمارات، أوروبا)." data-en="Ship your purchases from all Amazon branches worldwide.">شحن مراجعاتك من كافة فروع أمازون (أمريكا، الإمارات، أوروبا).</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('أمازون')" data-ar="شحن من أمازون" data-en="Ship from Amazon">شحن من أمازون</button>
+                <div class="platform-buttons">
+                    <button class="btn-platform-action" onclick="openQuoteModal('أمازون')" data-ar="شحن من أمازون" data-en="Ship from Amazon">شحن من أمازون</button>
+                    <a href="https://www.amazon.com" target="_blank" class="btn-platform-visit">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-ar="زيارة المنصة" data-en="Visit Platform">زيارة المنصة</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- eBay SVG Logo -->
+            <!-- eBay -->
             <div class="platform-card ebay">
                 <div class="platform-logo-box">
-                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-                        <text x="32%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#E53238">e</text>
-                        <text x="44%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#0064D2">b</text>
-                        <text x="56%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#F5AF02">a</text>
-                        <text x="67%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#86B817">y</text>
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+                        <text x="28%" y="65%" font-family="Arial, sans-serif" font-weight="900" font-size="180" fill="#E53238">e</text>
+                        <text x="42%" y="65%" font-family="Arial, sans-serif" font-weight="900" font-size="180" fill="#0064D2">b</text>
+                        <text x="56%" y="65%" font-family="Arial, sans-serif" font-weight="900" font-size="180" fill="#F5AF02">a</text>
+                        <text x="70%" y="65%" font-family="Arial, sans-serif" font-weight="900" font-size="180" fill="#86B817">y</text>
                     </svg>
                 </div>
                 <h3>eBay</h3>
                 <p data-ar="تجميع وشحن مشترياتك ومزاداتك من موقع إيباي العالمي." data-en="Consolidating and shipping purchases from global eBay auctions.">تجميع وشحن مشترياتك ومزاداتك من موقع إيباي العالمي.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('إيباي')" data-ar="شحن من إيباي" data-en="Ship from eBay">شحن من إيباي</button>
+                <div class="platform-buttons">
+                    <button class="btn-platform-action" onclick="openQuoteModal('إيباي')" data-ar="شحن من إيباي" data-en="Ship from eBay">شحن من إيباي</button>
+                    <a href="https://www.ebay.com" target="_blank" class="btn-platform-visit">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-ar="زيارة المنصة" data-en="Visit Platform">زيارة المنصة</span>
+                    </a>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -1010,6 +1069,11 @@
             <div class="footer-column">
                 <h4 data-ar="شركة طيب العراق" data-en="Taib Iraq Logistics">شركة طيب العراق</h4>
                 <p data-ar="نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك." data-en="Integrated logistics solutions connecting you to the world.">نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك.</p>
+            </div>
+            <div class="footer-column">
+                <h4 data-ar="تابعنا على التواصل الاجتماعي" data-en="Follow Us On Social Media">تابعنا على التواصل الاجتماعي</h4>
+                <p><a href="https://www.facebook.com/profile.php?id=61592644083096&rdid=9KH36mPXq5P9A2nE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1VJAE8Ukyg%2F#" target="_blank"><i class="fab fa-facebook"></i> <span data-ar="صفحة الفيس بوك" data-en="Facebook Page">صفحة الفيس بوك</span></a></p>
+                <p><a href="https://www.instagram.com/teeb.express/" target="_blank"><i class="fab fa-instagram"></i> <span data-ar="حساب الانستغرام" data-en="Instagram Account">حساب الانستغرام</span></a></p>
             </div>
             <div class="footer-column">
                 <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
@@ -1110,7 +1174,6 @@
         const companyWhatsAppNumber = "9647811662140";
         let currentLang = 'ar';
 
-        // دالة تبديل اللغة المحدثة وشغالة 100%
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             const html = document.documentElement;
@@ -1131,7 +1194,6 @@
             });
         }
 
-        // دالة تتبع الشحنة عبر الواتساب
         function trackShipmentWhatsApp() {
             const trackNumberInput = document.getElementById('trackNumberInput');
             const trackNumber = trackNumberInput.value.trim();
@@ -1145,7 +1207,6 @@
             }
         }
 
-        // دالة إرسال طلب التسعيرة عبر الواتساب
         function sendDetailedQuoteWhatsApp() {
             const fullName = document.getElementById('custFullName').value.trim();
             const whatsApp = document.getElementById('custWhatsApp').value.trim();
