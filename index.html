@@ -7,7 +7,7 @@
     <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- تحميل خط Tajawal المدرن والاحترافي من Google Fonts -->
+    <!-- تحميل خط Tajawal الاحترافي من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -19,18 +19,16 @@
             --copart-dark-blue: #003366;
             --copart-black: #111111;
             --copart-gray: #f2f4f7;
-            --copart-dark-gray: #333333;
             --white: #ffffff;
 
             /* متغيرات النمط النهاري */
             --bg-color: #f2f4f7;
             --card-bg: #ffffff;
             --text-color: #333333;
-            --header-bg: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(255, 255, 255, 0.95);
             --border-color: #e5e5e5;
-            --logo-bg: #ffffff;
             
-            /* الخط المدرن الجديد */
+            /* الخط المدرن */
             --main-font: 'Tajawal', sans-serif;
         }
 
@@ -39,17 +37,15 @@
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-color: #e0e0e0;
-            --header-bg: rgba(26, 26, 26, 0.9);
-            --copart-black: #080808;
+            --header-bg: rgba(26, 26, 26, 0.95);
             --border-color: #333333;
-            --logo-bg: #ffffff;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: var(--main-font); /* تطبيق الخط المدرن على كل شيء */
+            font-family: var(--main-font);
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -57,7 +53,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            font-size: 18px; /* تكبير الخط الأساسي للجسم */
+            font-size: 18px;
         }
 
         /* Top Bar */
@@ -77,6 +73,11 @@
             text-decoration: none;
             font-size: 1.3rem;
             transition: color 0.3s;
+        }
+
+        html[dir="ltr"] .top-bar .social-links a {
+            margin-left: 0;
+            margin-right: 18px;
         }
 
         .top-bar .social-links a:hover {
@@ -158,7 +159,6 @@
             background-color: var(--copart-blue);
         }
 
-        /* Mobile Menu Toggle Button */
         .mobile-toggle {
             display: none;
             background: none;
@@ -317,6 +317,11 @@
             border-radius: 3px;
         }
 
+        html[dir="ltr"] .why-us h2::after {
+            right: auto;
+            left: 0;
+        }
+
         .why-us-text {
             font-size: 1.3rem;
             color: var(--text-color);
@@ -339,6 +344,11 @@
             border-right: 5px solid var(--copart-blue);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             transition: transform 0.3s ease;
+        }
+
+        html[dir="ltr"] .feature-item {
+            border-right: none;
+            border-left: 5px solid var(--copart-blue);
         }
 
         .feature-item:hover {
@@ -427,10 +437,9 @@
             padding: 10px;
         }
 
-        .platform-logo-img {
-            max-height: 70px;
-            max-width: 100%;
-            object-fit: contain;
+        .platform-logo-svg {
+            max-height: 60px;
+            width: 80%;
         }
 
         .platform-card h3 {
@@ -559,6 +568,11 @@
             transition: transform 0.3s ease;
         }
 
+        html[dir="ltr"] .whatsapp-float {
+            left: auto;
+            right: 30px;
+        }
+
         .whatsapp-float:hover {
             transform: scale(1.1);
             background-color: #1ebd56;
@@ -647,6 +661,11 @@
             cursor: pointer;
         }
 
+        html[dir="ltr"] .close-modal {
+            left: auto;
+            right: 20px;
+        }
+
         .close-modal:hover {
             color: var(--text-color);
         }
@@ -717,7 +736,6 @@
             border-color: var(--copart-blue);
         }
 
-        /* تصميم قسم فحص الجودة */
         .quality-check-group {
             background-color: rgba(0, 86, 179, 0.05);
             padding: 15px;
@@ -742,7 +760,7 @@
             color: var(--copart-blue);
             font-size: 1rem;
             cursor: pointer;
-            margin: 0; /* إلغاء الهامش الافتراضي */
+            margin: 0;
         }
 
         .btn-submit-quote {
@@ -819,11 +837,11 @@
         <div class="top-controls">
             <button class="theme-toggle-btn" onclick="toggleDarkMode()">
                 <i class="fas fa-moon" id="themeIcon"></i>
-                <span id="themeText">الوضع المظلم</span>
+                <span id="themeText" data-ar="الوضع المظلم" data-en="Dark Mode">الوضع المظلم</span>
             </button>
-            <button class="lang-btn">
+            <button class="lang-btn" onclick="toggleLanguage()">
                 <i class="fas fa-globe"></i>
-                English
+                <span id="langBtnText">English</span>
             </button>
         </div>
     </div>
@@ -831,37 +849,37 @@
     <!-- Main Header -->
     <header>
         <div class="navbar">
-            <a href="#" class="logo">شركة <span>طيب العراق</span></a>
+            <a href="#" class="logo" data-ar="شركة <span>طيب العراق</span>" data-en="Taib Iraq <span>Logistics</span>">شركة <span>طيب العراق</span></a>
             <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars" id="menuIcon"></i>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#why-us">لماذا نحن؟</a></li>
-                <li><a href="#platforms">المنصات</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#tracking">تتبع الشحنة</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
+                <li><a href="#" onclick="closeMobileMenu()" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#why-us" onclick="closeMobileMenu()" data-ar="لماذا نحن؟" data-en="Why Us?">لماذا نحن؟</a></li>
+                <li><a href="#platforms" onclick="closeMobileMenu()" data-ar="المنصات" data-en="Platforms">المنصات</a></li>
+                <li><a href="#services" onclick="closeMobileMenu()" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                <li><a href="#tracking" onclick="closeMobileMenu()" data-ar="تتبع الشحنة" data-en="Tracking">تتبع الشحنة</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Banner -->
     <section class="hero">
-        <h1>طيب العراق للنقل واللوجستيك</h1>
-        <p>حلول شحن متكاملة من أرض المصنع في جميع دول العالم حتى باب مخزنك. دقة، أمان، وسرعة في التنفيذ.</p>
-        <button class="btn-quote" onclick="openQuoteModal()">طلب تسعيرة للشحن</button>
+        <h1 data-ar="طيب العراق للنقل واللوجستيك" data-en="Taib Iraq Logistics">طيب العراق للنقل واللوجستيك</h1>
+        <p data-ar="حلول شحن متكاملة من أرض المصنع في جميع دول العالم حتى باب مخزنك. دقة، أمان، وسرعة في التنفيذ." data-en="Integrated shipping solutions from the factory floor worldwide to your warehouse door. Accuracy, safety, and speed.">حلول شحن متكاملة من أرض المصنع في جميع دول العالم حتى باب مخزنك. دقة، أمان، وسرعة في التنفيذ.</p>
+        <button class="btn-quote" onclick="openQuoteModal()" data-ar="طلب تسعيرة للشحن" data-en="Request Shipping Quote">طلب تسعيرة للشحن</button>
     </section>
 
     <!-- Tracking Widget Section -->
     <section class="tracking-section" id="tracking">
         <div class="tracking-card">
-            <h3>تتبع شحنتك المباشر</h3>
+            <h3 data-ar="تتبع شحنتك المباشر" data-en="Track Your Shipment Live">تتبع شحنتك المباشر</h3>
             <form class="tracking-form" onsubmit="event.preventDefault(); trackShipmentWhatsApp();">
-                <input type="text" id="trackNumberInput" class="tracking-input" placeholder="أدخل رقم الشحنة (مثال: TBL123456)" required>
+                <input type="text" id="trackNumberInput" class="tracking-input" placeholder="أدخل رقم الشحنة (مثال: TBL123456)" data-ar-placeholder="أدخل رقم الشحنة (مثال: TBL123456)" data-en-placeholder="Enter tracking number (e.g. TBL123456)" required>
                 <button type="submit" class="btn-track">
                     <i class="fab fa-whatsapp"></i>
-                    تتبع عبر الواتساب
+                    <span data-ar="تتبع عبر الواتساب" data-en="Track via WhatsApp">تتبع عبر الواتساب</span>
                 </button>
             </form>
         </div>
@@ -870,103 +888,118 @@
     <!-- Why Choose Us Section -->
     <section class="why-us" id="why-us">
         <div class="why-us-container">
-            <h2>لماذا يختار التجار شركة طيب العراق؟</h2>
-            <p class="why-us-text">نوفر لك تجربة استيراد آمنة ومريحة من خلال خدماتنا اللوجستية المتكاملة التي تضمن حقك وتوفر عليك الجهد والمال.</p>
+            <h2 data-ar="لماذا يختار التجار شركة طيب العراق؟" data-en="Why Traders Choose Taib Iraq?">لماذا يختار التجار شركة طيب العراق؟</h2>
+            <p class="why-us-text" data-ar="نوفر لك تجربة استيراد آمنة ومريحة من خلال خدماتنا اللوجستية المتكاملة التي تضمن حقك وتوفر عليك الجهد والمال." data-en="We provide a safe and comfortable import experience through our logistics services that guarantee your rights.">نوفر لك تجربة استيراد آمنة ومريحة من خلال خدماتنا اللوجستية المتكاملة التي تضمن حقك وتوفر عليك الجهد والمال.</p>
             <div class="features-grid">
                 <div class="feature-item">
                     <i class="fas fa-check-circle"></i>
-                    <h4>فحص الجودة في المصنع</h4>
-                    <p>نقوم بفحص بضائعك داخل المصانع في بلد المنشأ لضمان مطابقتها للمواصفات قبل الشحن.</p>
+                    <h4 data-ar="فحص الجودة في المصنع" data-en="Quality Factory Inspection">فحص الجودة في المصنع</h4>
+                    <p data-ar="نقوم بفحص بضائعك داخل المصانع في بلد المنشأ لضمان مطابقتها للمواصفات قبل الشحن." data-en="We inspect your goods inside factories in the origin country before shipping.">نقوم بفحص بضائعك داخل المصانع في بلد المنشأ لضمان مطابقتها للمواصفات قبل الشحن.</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-file-contract"></i>
-                    <h4>تخليص جمركي احترافي</h4>
-                    <p>فريق متخصص لضمان تخليص بضائعك بسرعة وسلاسة وبدون أي معرقلات جمركية.</p>
+                    <h4 data-ar="تخليص جمركي احترافي" data-en="Customs Clearance">تخليص جمركي احترافي</h4>
+                    <p data-ar="فريق متخصص لضمان تخليص بضائعك بسرعة وسلاسة وبدون أي معرقلات جمركية." data-en="Specialized team ensuring fast and smooth customs clearance.">فريق متخصص لضمان تخليص بضائعك بسرعة وسلاسة وبدون أي معرقلات جمركية.</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-shipping-fast"></i>
-                    <h4>توصيل سريع وباب لباب</h4>
-                    <p>نستلم من المصنع ونسلمك في مخزنك في العراق، خدمة متكاملة ريح بالك معنا.</p>
+                    <h4 data-ar="توصيل سريع وباب لباب" data-en="Door to Door Delivery">توصيل سريع وباب لباب</h4>
+                    <p data-ar="نستلم من المصنع ونسلمك في مخزنك في العراق، خدمة متكاملة ريح بالك معنا." data-en="Receiving from factories straight to your warehouse door in Iraq.">نستلم من المصنع ونسلمك في مخزنك في العراق، خدمة متكاملة ريح بالك معنا.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Global Import Platforms Section -->
+    <!-- Global Import Platforms Section (SVG Logos 100% Reliable) -->
     <section class="platforms-section" id="platforms">
-        <h2>نستورد ونشحن من أكبر المنصات العالمية</h2>
-        <p class="subtitle">تسوّق من أي مكان، ونحن نتكفل بالإجراءات اللوجستية والشحن إلى العراق</p>
+        <h2 data-ar="نستورد ونشحن من أكبر المنصات العالمية" data-en="Import & Ship From Major Global Platforms">نستورد ونشحن من أكبر المنصات العالمية</h2>
+        <p class="subtitle" data-ar="تسوّق من أي مكان، ونحن نتكفل بالإجراءات اللوجستية والشحن إلى العراق" data-en="Shop from anywhere, and we handle all logistics to Iraq">تسوّق من أي مكان، ونحن نتكفل بالإجراءات اللوجستية والشحن إلى العراق</p>
         <div class="platforms-grid">
-            <!-- Alibaba -->
+            <!-- Alibaba SVG Logo -->
             <div class="platform-card alibaba">
                 <div class="platform-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Alibaba.svg" alt="Alibaba Logo" class="platform-logo-img">
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#FF6A00">Alibaba.com</text>
+                    </svg>
                 </div>
                 <h3>Alibaba</h3>
-                <p>للشحن التجاري وبكميات كبيرة من المصانع الصينية مباشرة.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('علي بابا')">شحن من علي بابا</button>
+                <p data-ar="للشحن التجاري وبكميات كبيرة من المصانع الصينية مباشرة." data-en="For commercial shipping and bulk orders from Chinese factories directly.">للشحن التجاري وبكميات كبيرة من المصانع الصينية مباشرة.</p>
+                <button class="btn-platform-action" onclick="openQuoteModal('علي بابا')" data-ar="شحن من علي بابا" data-en="Ship from Alibaba">شحن من علي بابا</button>
             </div>
-            <!-- AliExpress -->
+
+            <!-- AliExpress SVG Logo -->
             <div class="platform-card aliexpress">
                 <div class="platform-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/AliExpress_logo.svg" alt="AliExpress Logo" class="platform-logo-img">
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#E62E04">AliExpress</text>
+                    </svg>
                 </div>
                 <h3>AliExpress</h3>
-                <p>لشحن المنتجات الفردية والمشتريات الشخصية والكميات البسيطة.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('علي إكسبريس')">شحن من علي إكسبريس</button>
+                <p data-ar="لشحن المنتجات الفردية والمشتريات الشخصية والكميات البسيطة." data-en="For individual products and personal purchases in small quantities.">لشحن المنتجات الفردية والمشتريات الشخصية والكميات البسيطة.</p>
+                <button class="btn-platform-action" onclick="openQuoteModal('علي إكسبريس')" data-ar="شحن من علي إكسبريس" data-en="Ship from AliExpress">شحن من علي إكسبريس</button>
             </div>
-            <!-- Amazon -->
+
+            <!-- Amazon SVG Logo -->
             <div class="platform-card amazon">
                 <div class="platform-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="platform-logo-img">
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="110" fill="#111111">amazon</text>
+                        <path d="M 280 210 Q 500 270 720 210" stroke="#FF9900" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    </svg>
                 </div>
                 <h3>Amazon</h3>
-                <p>شحن مراجعاتك من كافة فروع أمازون (أمريكا، الإمارات، أوروبا).</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('أمازون')">شحن من أمازون</button>
+                <p data-ar="شحن مراجعاتك من كافة فروع أمازون (أمريكا، الإمارات، أوروبا)." data-en="Ship your purchases from all Amazon branches worldwide.">شحن مراجعاتك من كافة فروع أمازون (أمريكا، الإمارات، أوروبا).</p>
+                <button class="btn-platform-action" onclick="openQuoteModal('أمازون')" data-ar="شحن من أمازون" data-en="Ship from Amazon">شحن من أمازون</button>
             </div>
-            <!-- eBay -->
+
+            <!-- eBay SVG Logo -->
             <div class="platform-card ebay">
                 <div class="platform-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay Logo" class="platform-logo-img">
+                    <svg class="platform-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+                        <text x="32%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#E53238">e</text>
+                        <text x="44%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#0064D2">b</text>
+                        <text x="56%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#F5AF02">a</text>
+                        <text x="67%" y="60%" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#86B817">y</text>
+                    </svg>
                 </div>
                 <h3>eBay</h3>
-                <p>تجميع وشحن مشترياتك ومزاداتك من موقع إيباي العالمي.</p>
-                <button class="btn-platform-action" onclick="openQuoteModal('إيباي')">شحن من إيباي</button>
+                <p data-ar="تجميع وشحن مشترياتك ومزاداتك من موقع إيباي العالمي." data-en="Consolidating and shipping purchases from global eBay auctions.">تجميع وشحن مشترياتك ومزاداتك من موقع إيباي العالمي.</p>
+                <button class="btn-platform-action" onclick="openQuoteModal('إيباي')" data-ar="شحن من إيباي" data-en="Ship from eBay">شحن من إيباي</button>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2>خدماتنا اللوجستية</h2>
+        <h2 data-ar="خدماتنا اللوجستية" data-en="Our Logistics Services">خدماتنا اللوجستية</h2>
         <div class="services-grid">
             <div class="service-card">
                 <div class="icon-wrapper">
                     <i class="fas fa-plane service-icon"></i>
                 </div>
-                <h3>الشحن الجوي</h3>
-                <p>للشحنات المستعجلة والطرود الشخصية، سرعة فائقة في التوصيل.</p>
+                <h3 data-ar="الشحن الجوي" data-en="Air Freight">الشحن الجوي</h3>
+                <p data-ar="للشحنات المستعجلة والطرود الشخصية، سرعة فائقة في التوصيل." data-en="For urgent shipments and personal packages, high delivery speed.">للشحنات المستعجلة والطرود الشخصية، سرعة فائقة في التوصيل.</p>
             </div>
             <div class="service-card">
                 <div class="icon-wrapper">
                     <i class="fas fa-ship service-icon"></i>
                 </div>
-                <h3>الشحن البحري</h3>
-                <p>للبضائع الثقيلة والحاويات الكاملة (FCL) أو المجزأة (LCL).</p>
+                <h3 data-ar="الشحن البحري" data-en="Sea Freight">الشحن البحري</h3>
+                <p data-ar="للبضائع الثقيلة والحاويات الكاملة (FCL) أو المجزأة (LCL)." data-en="For heavy cargo, full container loads (FCL), or partial (LCL).">للبضائع الثقيلة والحاويات الكاملة (FCL) أو المجزأة (LCL).</p>
             </div>
             <div class="service-card">
                 <div class="icon-wrapper">
                     <i class="fas fa-warehouse service-icon"></i>
                 </div>
-                <h3>التخزين والتجميع</h3>
-                <p>مستودعات آمنة لتجميع شحناتك من عدة موردين قبل شحنها.</p>
+                <h3 data-ar="التخزين والتجميع" data-en="Warehousing & Consolidation">التخزين والتجميع</h3>
+                <p data-ar="مستودعات آمنة لتجميع شحناتك من عدة موردين قبل شحنها." data-en="Secure warehouses to consolidate your orders from multiple suppliers.">مستودعات آمنة لتجميع شحناتك من عدة موردين قبل شحنها.</p>
             </div>
             <div class="service-card">
                 <div class="icon-wrapper">
                     <i class="fas fa-file-invoice-dollar service-icon"></i>
                 </div>
-                <h3>تحويل الأموال للموردين</h3>
-                <p>خدمة دفع آمنة للموردين في الصين وباقي الدول لضمان حقك.</p>
+                <h3 data-ar="تحويل الأموال للموردين" data-en="Supplier Money Transfers">تحويل الأموال للموردين</h3>
+                <p data-ar="خدمة دفع آمنة للموردين في الصين وباقي الدول لضمان حقك." data-en="Secure payment service to suppliers in China and worldwide.">خدمة دفع آمنة للموردين في الصين وباقي الدول لضمان حقك.</p>
             </div>
         </div>
     </section>
@@ -975,56 +1008,53 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-column">
-                <h4>شركة طيب العراق</h4>
-                <p>نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك.</p>
+                <h4 data-ar="شركة طيب العراق" data-en="Taib Iraq Logistics">شركة طيب العراق</h4>
+                <p data-ar="نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك." data-en="Integrated logistics solutions connecting you to the world.">نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك.</p>
             </div>
             <div class="footer-column">
-                <h4>روابط سريعة</h4>
-                <a href="#">الرئيسية</a>
-                <a href="#why-us">لماذا نحن؟</a>
-                <a href="#services">خدماتنا</a>
-                <a href="#tracking">تتبع الشحنة</a>
+                <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
+                <a href="#" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                <a href="#why-us" data-ar="لماذا نحن؟" data-en="Why Us?">لماذا نحن؟</a>
+                <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+                <a href="#tracking" data-ar="تتبع الشحنة" data-en="Tracking">تتبع الشحنة</a>
             </div>
             <div class="footer-column">
-                <h4>تواصل معنا</h4>
+                <h4 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h4>
                 <p><i class="fas fa-phone"></i> 9647811662140+</p>
                 <p><i class="fas fa-envelope"></i> info@taibiraq.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> بغداد، العراق</p>
+                <p data-ar="بغداد، العراق" data-en="Baghdad, Iraq"><i class="fas fa-map-marker-alt"></i> بغداد، العراق</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2026 <span data-ar="شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة." data-en="Taib Iraq Logistics. All rights reserved.">شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة.</span></p>
         </div>
     </footer>
 
-    <!-- Quote Modal - النافذة المنبثقة الجديدة والمحسنة -->
+    <!-- Quote Modal -->
     <div id="quoteModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeQuoteModal()">&times;</span>
             <div class="modal-header">
-                <h3>طلب تسعيرة شحن مفصلة</h3>
-                <p>يرجى ملء كافة البيانات لضمان دقة التسعيرة</p>
+                <h3 data-ar="طلب تسعيرة شحن مفصلة" data-en="Detailed Quote Request">طلب تسعيرة شحن مفصلة</h3>
+                <p data-ar="يرجى ملء كافة البيانات لضمان دقة التسعيرة" data-en="Please fill in all details for an accurate quote">يرجى ملء كافة البيانات لضمان دقة التسعيرة</p>
             </div>
             <form class="quote-form" onsubmit="event.preventDefault(); sendDetailedQuoteWhatsApp();">
-                
-                <!-- السطر الأول: الاسم والهاتف -->
                 <div class="form-row">
                     <div class="quote-form-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" id="custFullName" placeholder="أدخل اسمك الثلاثي" required>
+                        <label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                        <input type="text" id="custFullName" placeholder="أدخل اسمك الثلاثي" data-ar-placeholder="أدخل اسمك الثلاثي" data-en-placeholder="Full Name" required>
                     </div>
                     <div class="quote-form-group">
-                        <label>رقم الهاتف (واتساب)</label>
+                        <label data-ar="رقم الهاتف (واتساب)" data-en="WhatsApp Phone">رقم الهاتف (واتساب)</label>
                         <input type="tel" id="custWhatsApp" placeholder="مثلاً: 964XXXXXXXXXX" required>
                     </div>
                 </div>
 
-                <!-- السطر الثاني: وسيلة الشحن والمصدر -->
                 <div class="form-row">
                     <div class="quote-form-group">
-                        <label>وسيلة الشحن</label>
+                        <label data-ar="وسيلة الشحن" data-en="Shipping Method">وسيلة الشحن</label>
                         <select id="shippingMethod" required>
-                            <option value="">اختر الوسيلة</option>
+                            <option value="" data-ar="اختر الوسيلة" data-en="Select Method">اختر الوسيلة</option>
                             <option value="شحن جوي">شحن جوي - Air Freight</option>
                             <option value="شحن بحري كامل">شحن بحري كامل - FCL</option>
                             <option value="شحن بحري جزئي">شحن بحري جزئي - LCL</option>
@@ -1032,9 +1062,9 @@
                         </select>
                     </div>
                     <div class="quote-form-group">
-                        <label>المنصة التسوقية (المصدر)</label>
+                        <label data-ar="المنصة التسوقية (المصدر)" data-en="E-commerce Platform">المنصة التسوقية (المصدر)</label>
                         <select id="purchasePlatform" required>
-                            <option value="">اختر المنصة</option>
+                            <option value="" data-ar="اختر المنصة" data-en="Select Platform">اختر المنصة</option>
                             <option value="علي بابا (Alibaba)">علي بابا (Alibaba)</option>
                             <option value="أمازون (Amazon)">أمازون (Amazon)</option>
                             <option value="علي إكسبريس (AliExpress)">علي إكسبريس (AliExpress)</option>
@@ -1046,62 +1076,77 @@
                     </div>
                 </div>
 
-                <!-- السطر الثالث: الوزن والحجم -->
                 <div class="form-row">
                     <div class="quote-form-group">
-                        <label>الوزن التقريبي (كغم)</label>
+                        <label data-ar="الوزن التقريبي (كغم)" data-en="Approx Weight (kg)">الوزن التقريبي (كغم)</label>
                         <input type="number" id="approxWeight" placeholder="مثلاً: 150">
                     </div>
                     <div class="quote-form-group">
-                        <label>الحجم التقديري (الأبعاد)</label>
+                        <label data-ar="الحجم التقديري (الأبعاد)" data-en="Approx Dimensions">الحجم التقديري (الأبعاد)</label>
                         <input type="text" id="approxDimensions" placeholder="مثلاً: 100x80x120 سم أو 2 CBM">
                     </div>
                 </div>
 
-                <!-- وصف البضاعة - عرض كامل -->
                 <div class="quote-form-group full-width">
-                    <label>وصف البضاعة (نوعها أو رابط المنتج)</label>
-                    <textarea id="goodsDescription" rows="4" placeholder="أذكر نوع البضاعة، موديلها، أو ضع رابط المنتج من المتجر هنا..." required></textarea>
+                    <label data-ar="وصف البضاعة (نوعها أو رابط المنتج)" data-en="Goods Description / Link">وصف البضاعة (نوعها أو رابط المنتج)</label>
+                    <textarea id="goodsDescription" rows="4" placeholder="أذكر نوع البضاعة، موديلها، أو ضع رابط المنتج هنا..." required></textarea>
                 </div>
 
-                <!-- خيار فحص الجودة -->
                 <div class="quality-check-group" onclick="toggleCheckbox('qualityInspect')">
                     <input type="checkbox" id="qualityInspect">
-                    <label for="qualityInspect">أرغب بفحص الجودة والمواصفات من المصنع قبل الشحن</label>
+                    <label for="qualityInspect" data-ar="أرغب بفحص الجودة والمواصفات من المصنع قبل الشحن" data-en="I request factory quality inspection before shipping">أرغب بفحص الجودة والمواصفات من المصنع قبل الشحن</label>
                 </div>
 
-                <!-- زر الإرسال -->
                 <button type="submit" class="btn-submit-quote">
                     <i class="fab fa-whatsapp"></i>
-                    إرسال طلب التسعيرة عبر الواتساب
+                    <span data-ar="إرسال طلب التسعيرة عبر الواتساب" data-en="Send Quote via WhatsApp">إرسال طلب التسعيرة عبر الواتساب</span>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- JS Code - تم إصلاح كود الواتساب بالكامل لضمان التنسيق -->
+    <!-- JS Code -->
     <script>
-        // رقم الواتساب الموحد للشركة
         const companyWhatsAppNumber = "9647811662140";
+        let currentLang = 'ar';
 
-        // وظيفة تتبع الشحنة عبر الواتساب (البسيطة)
+        // دالة تبديل اللغة المحدثة وشغالة 100%
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.documentElement;
+            
+            html.setAttribute('lang', currentLang);
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+
+            document.getElementById('langBtnText').innerText = currentLang === 'ar' ? 'English' : 'العربية';
+
+            document.querySelectorAll('[data-ar]').forEach(elem => {
+                if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
+                    const placeholder = elem.getAttribute(`data-${currentLang}-placeholder`);
+                    if (placeholder) elem.setAttribute('placeholder', placeholder);
+                } else {
+                    const text = elem.getAttribute(`data-${currentLang}`);
+                    if (text) elem.innerHTML = text;
+                }
+            });
+        }
+
+        // دالة تتبع الشحنة عبر الواتساب
         function trackShipmentWhatsApp() {
             const trackNumberInput = document.getElementById('trackNumberInput');
             const trackNumber = trackNumberInput.value.trim();
 
             if (trackNumber) {
                 const message = `السلام عليكم شركة طيب العراق، أرغب بتتبع شحنتي ذات الرقم: ${trackNumber}`;
-                // استخدام api.whatsapp.com لضمان التوافق الأفضل
                 const whatsappUrl = `https://api.whatsapp.com/send?phone=${companyWhatsAppNumber}&text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             } else {
-                alert("يرجى إدخال رقم الشحنة أولاً.");
+                alert(currentLang === 'ar' ? "يرجى إدخال رقم الشحنة أولاً." : "Please enter tracking number first.");
             }
         }
 
-        // وظيفة طلب التسعيرة المفصلة عبر الواتساب (مع حل مشكلة التنسيق)
+        // دالة إرسال طلب التسعيرة عبر الواتساب
         function sendDetailedQuoteWhatsApp() {
-            // جلب القيم من كافة الحقول الجديدة
             const fullName = document.getElementById('custFullName').value.trim();
             const whatsApp = document.getElementById('custWhatsApp').value.trim();
             const method = document.getElementById('shippingMethod').value;
@@ -1111,13 +1156,11 @@
             const description = document.getElementById('goodsDescription').value.trim();
             const inspect = document.getElementById('qualityInspect').checked;
 
-            // التحقق من الحقول الإلزامية
             if (!fullName || !whatsApp || !method || !platform || !description) {
-                alert("يرجى ملء جميع الحقول الإلزامية المسجلة.");
+                alert(currentLang === 'ar' ? "يرجى ملء جميع الحقول الإلزامية." : "Please fill in all required fields.");
                 return;
             }
 
-            // بناء الرسالة المنسقة باستخدام "السطر الجديد البرمجي" \n
             let message = `*طلب تسعيرة شحن مفصلة - طيب العراق*\n`;
             message += `--------------------------------\n`;
             message += `*الاسم الكامل:* ${fullName}\n`;
@@ -1132,23 +1175,16 @@
             message += `--------------------------------\n`;
             message += `*طلب فحص الجودة:* ${inspect ? '✅ نعم، أرغب بالفحص' : '❌ لا أرغب'}\n`;
 
-            // استخدام api.whatsapp.com وإنشاء الرابط بشكل صحيح
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${companyWhatsAppNumber}&text=${encodeURIComponent(message)}`;
-            
-            // فتح الرابط في نافذة جديدة
             window.open(whatsappUrl, '_blank');
-            
-            // إغلاق النافذة بعد الإرسال
             closeQuoteModal();
         }
 
-        // وظيفة لتسهيل النقر على قسم فحص الجودة
         function toggleCheckbox(id) {
             const checkbox = document.getElementById(id);
             checkbox.checked = !checkbox.checked;
         }
 
-        // باقي دوال الصفحة الأساسية
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const themeIcon = document.getElementById('themeIcon');
@@ -1156,11 +1192,11 @@
             if (document.body.classList.contains('dark-mode')) {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
-                themeText.innerText = 'الوضع المضيء';
+                themeText.innerText = currentLang === 'ar' ? 'الوضع المضيء' : 'Light Mode';
             } else {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
-                themeText.innerText = 'الوضع المظلم';
+                themeText.innerText = currentLang === 'ar' ? 'الوضع المظلم' : 'Dark Mode';
             }
         }
 
@@ -1174,23 +1210,20 @@
             navMenu.classList.remove('active');
         }
 
-        // إدارة النافذة المنبثقة
         const modal = document.getElementById('quoteModal');
         const platformSelect = document.getElementById('purchasePlatform');
 
         function openQuoteModal(sourcePlatform = '') {
             modal.style.display = 'block';
-            // إذا جاء الطلب من زر منصة محددة، اختر المنصة تلقائياً
             if (sourcePlatform) {
-                // البحث عن الخيار الذي يحتوي على اسم المنصة واختياره
-                for(let i=0; i<platformSelect.options.length; i++) {
-                    if(platformSelect.options[i].value.includes(sourcePlatform)) {
+                for (let i = 0; i < platformSelect.options.length; i++) {
+                    if (platformSelect.options[i].value.includes(sourcePlatform)) {
                         platformSelect.selectedIndex = i;
                         break;
                     }
                 }
             } else {
-                platformSelect.value = ""; // افتراضي
+                platformSelect.value = "";
             }
         }
 
@@ -1198,7 +1231,6 @@
             modal.style.display = 'none';
         }
 
-        // إغلاق النافذة عند النقر خارجها
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
