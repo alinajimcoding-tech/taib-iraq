@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة طيب العراق للنقل واللوجستيك | Taib Iraq Logistics</title>
+    <title>شركة طيب العراق للنقل واللوجستيك | Teeb Iraq Logistics</title>
     <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -14,19 +14,22 @@
 
     <style>
         :root {
-            /* الألوان الرئيسية - Copart Style */
-            --copart-blue: #0056b3;
-            --copart-dark-blue: #003366;
-            --copart-black: #111111;
-            --copart-gray: #f2f4f7;
+            /* درجات ألوان راقية وهادئة من الشعار */
+            --brand-purple: #6D28D9;       /* بنفسجي هادئ وفخم */
+            --brand-purple-dark: #5B21B6;  /* بنفسجي داكن */
+            --brand-orange: #EA580C;       /* برتقالي دافئ */
+            --brand-orange-hover: #C2410C;
+            --brand-subtle-bg: #F5F3FF;    /* خلفية بنفسجية خفيفة جداً */
+
+            --copart-black: #0F172A;       /* كحلي/أسود راقي */
             --white: #ffffff;
 
             /* متغيرات النمط النهاري */
-            --bg-color: #f2f4f7;
+            --bg-color: #F8FAFC;
             --card-bg: #ffffff;
-            --text-color: #333333;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --border-color: #e5e5e5;
+            --text-color: #1E293B;
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --border-color: #E2E8F0;
             
             /* الخط المدرن */
             --main-font: 'Tajawal', sans-serif;
@@ -34,11 +37,12 @@
 
         /* Dark Mode Theme Variables */
         body.dark-mode {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --header-bg: rgba(26, 26, 26, 0.95);
-            --border-color: #333333;
+            --bg-color: #0F172A;
+            --card-bg: #1E293B;
+            --text-color: #F1F5F9;
+            --header-bg: rgba(15, 23, 42, 0.98);
+            --border-color: #334155;
+            --brand-subtle-bg: rgba(109, 40, 217, 0.1);
         }
 
         * {
@@ -46,7 +50,7 @@
             margin: 0;
             padding: 0;
             font-family: var(--main-font);
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
         body {
@@ -65,6 +69,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 1rem;
+            border-bottom: 2px solid var(--brand-purple);
         }
 
         .top-bar .social-links a {
@@ -81,7 +86,7 @@
         }
 
         .top-bar .social-links a:hover {
-            color: var(--copart-blue);
+            color: var(--brand-orange);
         }
 
         .top-controls {
@@ -91,33 +96,34 @@
         }
 
         .lang-btn, .theme-toggle-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.1);
             color: var(--white);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 6px 15px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s;
         }
 
         .lang-btn:hover, .theme-toggle-btn:hover {
-            background: var(--copart-blue);
-            border-color: var(--copart-blue);
+            background: var(--brand-purple);
+            border-color: var(--brand-purple);
         }
 
         /* Header / Navbar */
         header {
             background-color: var(--header-bg);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid var(--copart-blue);
+            border-bottom: 3px solid var(--brand-purple);
         }
 
         .navbar {
@@ -134,8 +140,12 @@
             text-decoration: none;
         }
 
-        .logo span {
-            color: var(--copart-blue);
+        .logo span.purple-text {
+            color: var(--brand-purple);
+        }
+
+        .logo span.orange-text {
+            color: var(--brand-orange);
         }
 
         .nav-menu {
@@ -151,12 +161,12 @@
             font-size: 1.1rem;
             padding: 10px 15px;
             transition: 0.3s;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .nav-menu a:hover {
             color: var(--white);
-            background-color: var(--copart-blue);
+            background-color: var(--brand-purple);
         }
 
         .mobile-toggle {
@@ -170,9 +180,9 @@
 
         /* Hero Banner */
         .hero {
-            background: linear-gradient(rgba(0, 32, 74, 0.75), rgba(17, 17, 17, 0.8)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.82)), 
                         url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
-            height: 70vh;
+            height: 65vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -190,32 +200,32 @@
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 35px;
             max-width: 800px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
             font-weight: 500;
+            opacity: 0.95;
         }
 
         .btn-quote {
-            background-color: var(--copart-blue);
+            background-color: var(--brand-orange);
             color: var(--white);
             padding: 16px 45px;
-            border-radius: 35px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            border: 2px solid var(--copart-blue);
+            border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
         }
 
         .btn-quote:hover {
-            background-color: transparent;
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+            background-color: var(--brand-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
         }
 
         /* Tracking Widget Section */
@@ -231,8 +241,8 @@
             background: var(--card-bg);
             padding: 35px 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-            border-top: 5px solid var(--copart-blue);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--brand-purple);
         }
 
         .tracking-card h3 {
@@ -262,7 +272,7 @@
         }
 
         .tracking-input:focus {
-            border-color: var(--copart-blue);
+            border-color: var(--brand-purple);
         }
 
         .btn-track {
@@ -299,7 +309,7 @@
 
         .why-us h2 {
             color: var(--text-color);
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 15px;
@@ -311,10 +321,10 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 100px;
-            height: 5px;
-            background-color: var(--copart-blue);
-            border-radius: 3px;
+            width: 80px;
+            height: 4px;
+            background-color: var(--brand-purple);
+            border-radius: 2px;
         }
 
         html[dir="ltr"] .why-us h2::after {
@@ -323,11 +333,12 @@
         }
 
         .why-us-text {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--text-color);
             line-height: 1.8;
             margin-bottom: 40px;
             font-weight: 500;
+            opacity: 0.9;
         }
 
         .features-grid {
@@ -341,14 +352,14 @@
             background: var(--card-bg);
             padding: 35px;
             border-radius: 8px;
-            border-right: 5px solid var(--copart-blue);
+            border-right: 4px solid var(--brand-purple);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             transition: transform 0.3s ease;
         }
 
         html[dir="ltr"] .feature-item {
             border-right: none;
-            border-left: 5px solid var(--copart-blue);
+            border-left: 4px solid var(--brand-purple);
         }
 
         .feature-item:hover {
@@ -356,21 +367,21 @@
         }
 
         .feature-item i {
-            font-size: 2.5rem;
-            color: var(--copart-blue);
+            font-size: 2.2rem;
+            color: var(--brand-orange);
             margin-bottom: 18px;
         }
 
         .feature-item h4 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-color);
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .feature-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.05rem;
+            opacity: 0.85;
         }
 
         /* E-commerce Platforms Section */
@@ -381,16 +392,16 @@
         }
 
         .platforms-section h2 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             color: var(--text-color);
             margin-bottom: 15px;
             font-weight: 800;
         }
 
         .platforms-section p.subtitle {
-            opacity: 0.9;
+            opacity: 0.85;
             margin-bottom: 50px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 500;
         }
 
@@ -407,7 +418,7 @@
             padding: 35px 25px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -415,18 +426,18 @@
             justify-content: space-between;
         }
 
-        .platform-card.alibaba { border-top: 5px solid #ff6a00; }
-        .platform-card.aliexpress { border-top: 5px solid #e62e04; }
-        .platform-card.amazon { border-top: 5px solid #111111; }
-        .platform-card.ebay { border-top: 5px solid #0064d2; }
+        .platform-card.alibaba { border-top: 4px solid #ff6a00; }
+        .platform-card.aliexpress { border-top: 4px solid #e62e04; }
+        .platform-card.amazon { border-top: 4px solid #111111; }
+        .platform-card.ebay { border-top: 4px solid #0064d2; }
 
         .platform-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
         .platform-logo-box {
-            height: 110px;
+            height: 100px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -435,16 +446,16 @@
             background-color: #ffffff;
             border-radius: 8px;
             padding: 10px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.03);
         }
 
         .platform-logo-svg {
-            max-height: 85px;
+            max-height: 80px;
             width: 90%;
         }
 
         .platform-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-color);
             margin-bottom: 12px;
             font-weight: 700;
@@ -452,7 +463,7 @@
 
         .platform-card p {
             font-size: 1.05rem;
-            opacity: 0.9;
+            opacity: 0.85;
             margin-bottom: 20px;
         }
 
@@ -464,7 +475,7 @@
         }
 
         .btn-platform-action {
-            background-color: var(--copart-blue);
+            background-color: var(--brand-purple);
             color: var(--white);
             border: none;
             padding: 12px 20px;
@@ -479,7 +490,7 @@
         }
 
         .btn-platform-action:hover {
-            background-color: var(--copart-dark-blue);
+            background-color: var(--brand-purple-dark);
         }
 
         .btn-platform-visit {
@@ -502,9 +513,9 @@
         }
 
         .btn-platform-visit:hover {
-            border-color: var(--copart-blue);
-            background-color: rgba(0, 86, 179, 0.05);
-            color: var(--copart-blue);
+            border-color: var(--brand-purple);
+            color: var(--brand-purple);
+            background-color: var(--brand-subtle-bg);
         }
 
         /* Services Section */
@@ -515,7 +526,7 @@
         }
 
         .services h2 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             color: var(--text-color);
             margin-bottom: 50px;
             font-weight: 800;
@@ -537,15 +548,15 @@
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--copart-blue);
-            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.12);
+            transform: translateY(-6px);
+            border-color: var(--brand-purple);
+            box-shadow: 0 10px 20px rgba(109, 40, 217, 0.08);
         }
 
         .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(0, 86, 179, 0.1);
+            width: 75px;
+            height: 75px;
+            background-color: var(--brand-subtle-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -555,12 +566,12 @@
         }
 
         .service-card:hover .icon-wrapper {
-            background-color: var(--copart-blue);
+            background-color: var(--brand-purple);
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--copart-blue);
+            font-size: 2.2rem;
+            color: var(--brand-purple);
             transition: 0.3s;
         }
 
@@ -571,28 +582,28 @@
         .service-card h3 {
             color: var(--text-color);
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
         }
         
         .service-card p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.05rem;
+            opacity: 0.85;
         }
 
         /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             bottom: 30px;
             left: 30px;
             background-color: #25d366;
             color: #fff;
             border-radius: 50px;
             text-align: center;
-            font-size: 35px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 1500;
             display: flex;
             align-items: center;
@@ -607,7 +618,7 @@
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
             background-color: #1ebd56;
         }
 
@@ -616,6 +627,7 @@
             background-color: var(--copart-black);
             color: var(--white);
             padding: 60px 5% 20px 5%;
+            border-top: 4px solid var(--brand-purple);
         }
 
         .footer-content {
@@ -626,16 +638,16 @@
         }
 
         .footer-column h4 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 20px;
-            color: var(--copart-blue);
+            color: var(--brand-orange);
             font-weight: 700;
         }
 
         .footer-column p, .footer-column a {
-            color: #ccc;
+            color: #cbd5e1;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 1rem;
             display: block;
             margin-bottom: 12px;
         }
@@ -646,10 +658,10 @@
 
         .footer-bottom {
             text-align: center;
-            border-top: 1px solid #333;
+            border-top: 1px solid #334155;
             padding-top: 20px;
             font-size: 0.95rem;
-            color: #888;
+            color: #94a3b8;
         }
 
         /* Modal / النافذة المنبثقة */
@@ -662,25 +674,25 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
         }
 
         .modal-content {
             background-color: var(--card-bg);
             margin: 5% auto;
             padding: 40px;
-            border-top: 5px solid var(--copart-blue);
+            border-top: 5px solid var(--brand-purple);
             border-radius: 12px;
             width: 90%;
             max-width: 650px;
             position: relative;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
             animation: modalFadeIn 0.3s ease-in-out;
         }
 
         @keyframes modalFadeIn {
-            from { transform: translateY(-30px); opacity: 0; }
+            from { transform: translateY(-20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
@@ -710,7 +722,7 @@
 
         .modal-header h3 {
             color: var(--text-color);
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 800;
         }
 
@@ -746,7 +758,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-color);
         }
 
@@ -766,14 +778,14 @@
         .quote-form-group input:focus, 
         .quote-form-group select:focus, 
         .quote-form-group textarea:focus {
-            border-color: var(--copart-blue);
+            border-color: var(--brand-purple);
         }
 
         .quality-check-group {
-            background-color: rgba(0, 86, 179, 0.05);
+            background-color: var(--brand-subtle-bg);
             padding: 15px;
             border-radius: 6px;
-            border: 1px solid rgba(0, 86, 179, 0.1);
+            border: 1px solid rgba(109, 40, 217, 0.2);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -782,16 +794,16 @@
         }
 
         .quality-check-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             cursor: pointer;
-            accent-color: var(--copart-blue);
+            accent-color: var(--brand-purple);
         }
 
         .quality-check-group label {
             font-weight: bold;
-            color: var(--copart-blue);
-            font-size: 1rem;
+            color: var(--brand-purple);
+            font-size: 0.95rem;
             cursor: pointer;
             margin: 0;
         }
@@ -801,8 +813,8 @@
             background-color: #25d366;
             color: var(--white);
             border: none;
-            padding: 16px;
-            font-size: 1.2rem;
+            padding: 15px;
+            font-size: 1.15rem;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
@@ -838,7 +850,7 @@
                 display: flex;
             }
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.1rem;
             }
             .features-grid {
                 grid-template-columns: 1fr;
@@ -882,7 +894,7 @@
     <!-- Main Header -->
     <header>
         <div class="navbar">
-            <a href="#" class="logo" data-ar="شركة <span>طيب العراق</span>" data-en="Taib Iraq <span>Logistics</span>">شركة <span>طيب العراق</span></a>
+            <a href="#" class="logo" data-ar="شركة <span class='purple-text'>طيب</span> <span class='orange-text'>العراق</span>" data-en="<span class='purple-text'>Teeb</span> <span class='orange-text'>Iraq</span>">شركة <span class="purple-text">طيب</span> <span class="orange-text">العراق</span></a>
             <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars" id="menuIcon"></i>
             </button>
@@ -899,7 +911,7 @@
 
     <!-- Hero Banner -->
     <section class="hero">
-        <h1 data-ar="طيب العراق للنقل واللوجستيك" data-en="Taib Iraq Logistics">طيب العراق للنقل واللوجستيك</h1>
+        <h1 data-ar="طيب العراق للنقل واللوجستيك" data-en="Teeb Iraq Logistics">طيب العراق للنقل واللوجستيك</h1>
         <p data-ar="حلول شحن متكاملة من أرض المصنع في جميع دول العالم حتى باب مخزنك. دقة، أمان، وسرعة في التنفيذ." data-en="Integrated shipping solutions from the factory floor worldwide to your warehouse door. Accuracy, safety, and speed.">حلول شحن متكاملة من أرض المصنع في جميع دول العالم حتى باب مخزنك. دقة، أمان، وسرعة في التنفيذ.</p>
         <button class="btn-quote" onclick="openQuoteModal()" data-ar="طلب تسعيرة للشحن" data-en="Request Shipping Quote">طلب تسعيرة للشحن</button>
     </section>
@@ -921,7 +933,7 @@
     <!-- Why Choose Us Section -->
     <section class="why-us" id="why-us">
         <div class="why-us-container">
-            <h2 data-ar="لماذا يختار التجار شركة طيب العراق؟" data-en="Why Traders Choose Taib Iraq?">لماذا يختار التجار شركة طيب العراق؟</h2>
+            <h2 data-ar="لماذا يختار التجار شركة طيب العراق؟" data-en="Why Traders Choose Teeb Iraq?">لماذا يختار التجار شركة طيب العراق؟</h2>
             <p class="why-us-text" data-ar="نوفر لك تجربة استيراد آمنة ومريحة من خلال خدماتنا اللوجستية المتكاملة التي تضمن حقك وتوفر عليك الجهد والمال." data-en="We provide a safe and comfortable import experience through our logistics services that guarantee your rights.">نوفر لك تجربة استيراد آمنة ومريحة من خلال خدماتنا اللوجستية المتكاملة التي تضمن حقك وتوفر عليك الجهد والمال.</p>
             <div class="features-grid">
                 <div class="feature-item">
@@ -1067,7 +1079,7 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-column">
-                <h4 data-ar="شركة طيب العراق" data-en="Taib Iraq Logistics">شركة طيب العراق</h4>
+                <h4 data-ar="شركة طيب العراق" data-en="Teeb Iraq Logistics">شركة طيب العراق</h4>
                 <p data-ar="نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك." data-en="Integrated logistics solutions connecting you to the world.">نقدم حلولاً لوجستية متكاملة بلمسة عراقية وأصالة، نربطك بالعالم لتنمو أعمالك.</p>
             </div>
             <div class="footer-column">
@@ -1084,13 +1096,13 @@
             </div>
             <div class="footer-column">
                 <h4 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h4>
-                <p><i class="fas fa-phone"></i> 9647811662140+</p>
-                <p><i class="fas fa-envelope"></i> info@taibiraq.com</p>
-                <p data-ar="بغداد، العراق" data-en="Baghdad, Iraq"><i class="fas fa-map-marker-alt"></i> بغداد، العراق</p>
+                <p><i class="fas fa-phone"></i> +9647811662140</p>
+                <p><i class="fas fa-envelope"></i> info@teebiraq.com</p>
+                <p data-ar="العراق" data-en="Iraq"><i class="fas fa-map-marker-alt"></i> العراق</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <span data-ar="شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة." data-en="Taib Iraq Logistics. All rights reserved.">شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة.</span></p>
+            <p>&copy; 2026 <span data-ar="شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة." data-en="Teeb Iraq Logistics. All rights reserved.">شركة طيب العراق للنقل واللوجستيك. جميع الحقوق محفوظة.</span></p>
         </div>
     </footer>
 
